@@ -1,0 +1,75 @@
+@import url("../src/css/animation.css");
+
+/* Variables */
+:root {
+  --background-color: #111;
+
+  --text-color: #fff;
+
+  --header-background-color: #1f1f1f;
+
+  --button-1-background-color: #324cdc;
+  --button-1-text-color: #fff;
+
+  --button-2-background-color: #303030;
+  --button-2-text-color: #fff;
+
+  --input-border-color: #bcbaba;
+  --input-text-color: #fff;
+}
+
+/* Global Styling */
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  transition: 0.2s ease-in-out;
+  font-family: "Poppins", "DM Sans", "Montserrat", "Open Sans";
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+p {
+  color: var(--text-color);
+}
+
+/* Button Configuration */
+button {
+  background-color: var(--button-1-background-color);
+  color: var(--button-1-text-color);
+  height: 45px;
+  border-radius: 8px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(0.95);
+  filter: brightness(0.9);
+}
+
+button:active {
+  transform: scale(0.5);
+}
+
+/* Text configuration */
+p {
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+/* Input configuration */
+input {
+  background-color: transparent;
+  height: 45px;
+  border: 1px solid var(--input-border-color);
+  color: var(--input-text-color);
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 0 17px;
+}
+
+input:focus {
+  outline: 0;
+}
