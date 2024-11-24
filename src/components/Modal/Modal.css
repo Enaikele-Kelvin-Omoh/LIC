@@ -1,0 +1,66 @@
+.Modal {
+  width: 100vw;
+  height: 100svh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.modal-container {
+  width: 340px;
+  height: fit-content;
+  background-color: var(--modal-background);
+  border-radius: 20px;
+  /* border: 1px solid #fff; */
+  padding: 20px 25px 25px;
+}
+
+.modal-container .cancel-block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-container .cancel-block i:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  color: var(--red);
+}
+
+.modal-container .icon-block {
+  margin-top: 2px;
+  margin-bottom: 13px;
+}
+
+.modal-container .icon-block i {
+  font-size: 35px;
+}
+
+.modal-container .message-block p {
+  text-align: center;
+  font-family: "Montserrat";
+  line-height: 150%;
+}
+
+.modal-container .button-block {
+  margin-top: 20px;
+}
+
+.SuccessModal {
+}
+
+.SuccessModal .icon-block i {
+  color: rgb(14, 197, 14);
+}
+
+.ErrorModal .icon-block i {
+  color: var(--red);
+}
+
+.WarningModal .icon-block i {
+  color: orange;
+}

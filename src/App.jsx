@@ -6,8 +6,9 @@ import LecturePage from "./pages/LecturePage/LecturePage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import NotepadPage from "./pages/NotepadPage/NotepadPage";
 import { AuthProvider } from "./context/AuthContext";
-import { Flip, toast, ToastContainer, Bounce } from "react-toastify";
+import { Flip, ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Modal from "./components/Modal/Modal";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
               element={<NotepadPage />}
             />
           </Routes>
+          <Modal />
           <ToastContainer
             position={window.innerWidth > 800 ? "bottom-left" : "top-center"}
             autoClose={5000}

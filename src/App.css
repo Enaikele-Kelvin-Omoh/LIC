@@ -1,8 +1,11 @@
 @import url("../src/css/animation.css");
+@import url("../src/css/tailwind.css");
 
 /* Variables */
 :root {
   --background-color: #111;
+
+  --modal-background: #111;
 
   --text-color: #fff;
 
@@ -16,6 +19,8 @@
 
   --input-border-color: #bcbaba;
   --input-text-color: #fff;
+
+  --red: #f74d4d;
 }
 
 /* Global Styling */
@@ -25,10 +30,12 @@
   box-sizing: border-box;
   transition: 0.2s ease-in-out;
   font-family: "Poppins", "DM Sans", "Montserrat", "Open Sans";
+  color: #fff;
 }
 
 body {
   background-color: var(--background-color);
+  overflow: hidden;
 }
 
 p {
@@ -41,6 +48,7 @@ button {
   color: var(--button-1-text-color);
   height: 45px;
   border-radius: 8px;
+  width: 100%;
 }
 
 button:hover {
