@@ -48,8 +48,6 @@ function App() {
               element={<NotepadPage />}
             />
           </Routes>
-          <Modal />
-          <Loader />
           <ToastContainer
             position={window.innerWidth > 800 ? "bottom-left" : "top-center"}
             autoClose={5000}
