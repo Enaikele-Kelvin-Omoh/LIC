@@ -9,8 +9,19 @@ import { AuthProvider } from "./context/AuthContext";
 import { Flip, ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Modal from "./components/Modal/Modal";
+import {
+  errorModal,
+  inputModal,
+  successModal,
+  warningModal,
+} from "./utils/modal";
+import { useEffect } from "react";
+import Loader from "./components/Loader/Loader";
+import { hideLoader, showLoader } from "./utils/loader";
 
 function App() {
+  useEffect(() => {}, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -37,7 +48,6 @@ function App() {
               element={<NotepadPage />}
             />
           </Routes>
-          {/* <Modal /> */}
           <ToastContainer
             position={window.innerWidth > 800 ? "bottom-left" : "top-center"}
             autoClose={5000}
