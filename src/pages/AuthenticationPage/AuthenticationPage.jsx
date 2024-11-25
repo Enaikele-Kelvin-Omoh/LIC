@@ -17,59 +17,65 @@ const AuthenticationPage = () => {
             className={`auth-login ${isLogin ? 'auth-active' : ''}`}
             onClick={() => setIsLogin(true)}
           >
-            Login
+            <p>Login</p>
           </div>
           <span>|</span>
           <div
             className={`auth-sign-up ${!isLogin ? 'auth-active' : ''}`}
             onClick={() => setIsLogin(!isLogin)}
           >
-            Sign up
+            <p>Signup</p>
           </div>
         </div>
 
         <form className="auth-form auth-form-login">
-          {!isLogin && (
-            <>
-              <input
-                type="text"
-                placeholder="Firstname"
-                className="auth-fname"
-              ></input>
-              <input
-                type="text"
-                placeholder="Lastname"
-                className="auth-lname"
-              ></input>
-              <input
-                type="email"
-                placeholder="Email"
-                className="auth-email"
-              ></input>
-              <input
-                type="password"
-                placeholder="Password"
-                className="auth-password"
-              ></input>
-            </>
-          )}
-          {isLogin && (
-            <>
-              <input
-                type="email"
-                placeholder="Email"
-                className="auth-email"
-              ></input>
-              <input
-                type="password"
-                placeholder="Password"
-                className="auth-password"
-              ></input>
-            </>
-          )}
-          <button type="submit" className="auth-btn-submit">
-            {!isLogin ? 'Create an account' : 'Login'}
-          </button>
+          <div className="form-block">
+            {!isLogin && (
+              <>
+                <div className="name-block w-full">
+                  <input
+                    type="text"
+                    placeholder="Firstname"
+                    className="auth-fname"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Lastname"
+                    className="auth-lname"
+                  />
+                </div>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="auth-email"
+                />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="auth-password"
+                />
+              </>
+            )}
+            {isLogin && (
+              <>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="auth-email"
+                ></input>
+                <input
+                  type="password"
+                  placeholder="Password"
+                  className="auth-password"
+                ></input>
+              </>
+            )}
+          </div>
+          <div className="btn-block">
+            <button type="submit" className="auth-btn-submit">
+              {!isLogin ? 'Create an account' : 'Login'}
+            </button>
+          </div>
         </form>
 
         {/* {isLogin && (

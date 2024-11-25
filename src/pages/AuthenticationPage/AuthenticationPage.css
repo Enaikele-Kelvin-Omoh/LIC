@@ -7,45 +7,70 @@
 }
 
 .auth-container {
-  width: 50rem;
-  padding: 5rem;
+  width: 38.9rem;
+  height: 47rem;
+  padding: 3.5rem;
   border-radius: 2rem;
   background-color: var(--container-background-color);
   text-align: center;
 }
 
+.auth-action p {
+  font-size: 13px;
+  opacity: 0.31;
+  font-weight: 300;
+}
 .auth-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.9rem;
 }
 
 .auth-email,
 .auth-password,
 .auth-btn-submit {
-  grid-column: 1/-1;
 }
 
 .auth-text {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
   font-size: 2rem;
 }
 
 .auth-action {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2.3rem;
   margin-bottom: 3rem;
   font-size: 1.4rem;
   color: rgba(242, 242, 242, 0.31);
   cursor: pointer;
 }
 
-.auth-active {
+.auth-active p {
   color: var(--input-text-color);
+  opacity: 1;
 }
 
 .auth-logo {
-  margin-bottom: 2rem;
+  margin-bottom: 1.4rem;
+  height: 4.5rem;
+  width: 4.5rem;
+}
+
+.auth-form .name-block {
+  display: flex;
+  width: 100%;
+  gap: 1.4rem;
+}
+
+.auth-btn-submit {
+  margin-top: 1.9rem;
+}
+
+.auth-form .form-block {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  height: 15.7rem;
 }
