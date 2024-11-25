@@ -2,4 +2,18 @@
   width: 100vw;
   height: 55px;
   background-color: var(--header-background-color);
+  display: flex;
+  padding: 0 3.2rem;
+}
+
+.Navbar .btn-2 {
+  height: 40px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0 1.8rem;
+  border-radius: 0.4rem;
+}
+
+.Navbar .right-container {
+  gap: 26px;
 }

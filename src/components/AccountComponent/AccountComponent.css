@@ -1,0 +1,85 @@
+.AccountComponent {
+  position: fixed;
+  top: 9.2rem;
+  width: 36.5rem;
+  height: 52.3rem;
+  background-color: #0a0a0a;
+  border-radius: 10rem;
+  border: 1px solid var(--input-border-color);
+  padding: 0 32px;
+  transition: 1s ease;
+}
+
+.AccountComponent-active {
+  position: fixed;
+  top: 9.2rem;
+  right: 2.8rem;
+  width: 36.5rem;
+  height: 52.3rem;
+  border-radius: 2.2rem;
+  border: 1px solid var(--input-border-color);
+  padding: 0 32px;
+}
+
+.AccountComponent-inactive {
+  position: fixed;
+  top: 9.2rem;
+  right: calc(-100% - 2.8rem);
+
+  width: 36.5rem;
+  height: 52.3rem;
+  background-color: #0a0a0a;
+  border-radius: 1.7rem;
+  border: 1px solid var(--input-border-color);
+  padding: 0 32px;
+}
+
+.AccountComponent img {
+  width: 13rem;
+  height: 13rem;
+  object-fit: cover;
+  margin-top: 3.5rem;
+  border-radius: 50%;
+}
+
+.AccountComponent .email {
+  font-size: 12px;
+  font-weight: 300;
+  margin-top: 2rem;
+}
+
+.AccountComponent .input-block {
+  margin-top: 2.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.AccountComponent button {
+  margin-top: 2.6rem;
+}
+
+.AccountComponent .signout-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.AccountComponent .signout-container p {
+  font-weight: 400;
+}
+
+.AccountComponent .signout-container i {
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+.AccountComponent .signout-container:hover {
+  cursor: pointer;
+}
+
+.AccountComponent .signout-container:hover > * {
+  color: var(--red);
+}

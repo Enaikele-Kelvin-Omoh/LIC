@@ -1,0 +1,11 @@
+.Avatar {
+  width: 31px;
+  height: 31px;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.Avatar:hover {
+  cursor: pointer;
+}

@@ -32,7 +32,7 @@
   box-sizing: border-box;
   transition: 0.2s ease-in-out;
   font-family: 'Poppins', 'DM Sans', 'Montserrat', 'Open Sans';
-  /* color: #fff; */
+  color: var(--text-color);
 }
 
 html {
@@ -63,6 +63,10 @@ button {
   width: 100%;
 }
 
+button i {
+  margin-left: 0.9rem;
+}
+
 button:hover {
   cursor: pointer;
   transform: scale(0.95);
@@ -71,6 +75,11 @@ button:hover {
 
 button:active {
   transform: scale(0.5);
+}
+
+.btn-2 {
+  background-color: var(--button-2-background-color);
+  color: var(--button-2-text-color);
 }
 
 /* Text configuration */

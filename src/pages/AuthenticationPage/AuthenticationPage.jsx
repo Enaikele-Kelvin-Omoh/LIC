@@ -6,7 +6,7 @@ import logo from '/src/assets/logo.png';
 const AuthenticationPage = () => {
   const [isLogin, setIsLogin] = useState(false);
   return (
-    <div className="AuthenticationPage">
+    <div className="AuthenticationPage drop-animation">
       <div className="auth-container">
         <img src={logo} alt="Logo" className="auth-logo" />
         <h2 className="auth-text">
@@ -47,12 +47,12 @@ const AuthenticationPage = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="auth-email"
+                  className="auth-email shrink-0"
                 />
                 <input
                   type="password"
                   placeholder="Password"
-                  className="auth-password"
+                  className="auth-password  shrink-0"
                 />
               </>
             )}
@@ -61,12 +61,12 @@ const AuthenticationPage = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="auth-email"
+                  className="auth-email  shrink-0"
                 ></input>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="auth-password"
+                  className="auth-password  shrink-0"
                 ></input>
               </>
             )}
