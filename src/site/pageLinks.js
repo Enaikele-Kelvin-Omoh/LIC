@@ -5,7 +5,7 @@ export const pageLinks = {
   },
   lecturePage: {
     baseUrl: "/lecture",
-    dynamicUrl: "/lecture/lectureId",
+    dynamicUrl: "/lecture/:lectureId",
   },
   dashboardPage: {
     baseUrl: "/dashboard",
@@ -13,7 +13,7 @@ export const pageLinks = {
   },
   notepadPage: {
     baseUrl: "/notepad",
-    dynamicUrl: "/notepad/notepadId",
+    dynamicUrl: "/notepad/:notepadId",
   },
   unresolvedPage: {
     baseUrl: "*",

@@ -18,6 +18,7 @@ import {
 import { useEffect } from "react";
 import Loader from "./components/Loader/Loader";
 import { hideLoader, showLoader } from "./utils/loader";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   useEffect(() => {}, []);
@@ -26,6 +27,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
+          <Navbar />
           <Routes>
             <Route
               path={pageLinks.unresolvedPage.dynamicUrl}

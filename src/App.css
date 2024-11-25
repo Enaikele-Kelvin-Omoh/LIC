@@ -81,3 +81,8 @@ input {
 input:focus {
   outline: 0;
 }
+
+.custom-page {
+  width: 100vw;
+  height: calc(100svh - 55px);
+}

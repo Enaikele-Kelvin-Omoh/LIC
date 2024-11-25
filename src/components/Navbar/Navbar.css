@@ -1,0 +1,5 @@
+.Navbar {
+  width: 100vw;
+  height: 55px;
+  background-color: var(--header-background-color);
+}
