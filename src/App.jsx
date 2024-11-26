@@ -38,10 +38,6 @@ function App() {
               element={<AuthenticationPage />}
             />
             <Route
-              path={pageLinks.lecturePage.dynamicUrl}
-              element={<LecturePage />}
-            />
-            <Route
               path={pageLinks.dashboardPage.dynamicUrl}
               element={<DashboardPage />}
             />
