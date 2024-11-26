@@ -1,0 +1,91 @@
+.PresentationPreview {
+  width: 100%;
+  height: 100%;
+  background-color: var(--header-background-color);
+  border-radius: 6px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.PresentationPreview .left-box {
+  gap: 8px;
+}
+
+.PresentationPreview .left-box i {
+  font-size: 16px;
+  color: var(--accent-color);
+}
+
+.PresentationPreview .left-box p {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.PresentationPreview .right-box button {
+  width: fit-content;
+  /* padding: 0 18px; */
+  height: 40px;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: 12px;
+}
+
+.PresentationPreview .right-box button i {
+  margin-left: 2px;
+}
+.PresentationPreview .right-box .rest i {
+  color: var(--accent-color);
+}
+.PresentationPreview .right-box .quest i {
+  color: var(--red);
+}
+
+.PresentationPreview .body {
+  width: 100%;
+  height: 100%;
+  padding: 15px 0;
+}
+.PresentationPreview .body .title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.PresentationPreview .btn-block {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.PresentationPreview .btn-block button {
+  width: fit-content;
+  padding: 0 28px;
+  height: 40px;
+}
+
+.PowerPoint {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.PowerPoint .left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.PowerPoint .left i {
+  color: var(--accent-color);
+  font-size: 13px;
+}
+
+.PowerPoint .right i {
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.PowerPoint p {
+  font-size: 12px;
+  font-weight: 300;
+}

@@ -9,6 +9,8 @@
 
   --text-color: #fff;
 
+  --accent-color: #324cdc;
+
   --header-background-color: #1f1f1f;
 
   --button-1-background-color: #324cdc;
@@ -107,4 +109,28 @@ input:focus {
 
 input::placeholder {
   color: var(--input-text-color);
+}
+textarea {
+  background-color: transparent;
+  height: 45px;
+  border: 1px solid var(--input-border-color);
+  color: var(--input-text-color);
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 8px 17px;
+  width: 100%;
+}
+
+textarea:focus {
+  outline: 0;
+  background-color: transparent;
+}
+
+textarea::placeholder {
+  color: var(--input-text-color);
+}
+
+.custom-page {
+  width: 100%;
+  height: calc(100svh - 55px);
 }

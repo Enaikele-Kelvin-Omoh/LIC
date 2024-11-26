@@ -1,0 +1,87 @@
+.NotepadPreview {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.NotepadPreview .heading {
+}
+
+.NotepadPreview .heading p {
+  font-weight: 600;
+}
+
+.NotepadPreview .heading i {
+  font-size: 15px;
+}
+.NotepadPreview .body {
+  width: 100%;
+  height: 100%;
+}
+
+.NotepadPreview .input {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.NotepadPreview .input textarea {
+  height: 60px;
+  resize: none;
+}
+
+.NotepadPreview .input i {
+  font-size: 23px;
+}
+
+.NotepadPreview .input i:hover {
+  transform: translateY(-5px);
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
+.NotepadPoint {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.NotepadPoint .left {
+  display: flex;
+  gap: 12px;
+}
+
+.NotepadPoint .left i {
+  margin-top: 4px;
+  color: var(--accent-color);
+}
+
+.NotepadPoint .text-block p {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.NotepadPoint .right {
+  display: flex;
+  gap: 15px;
+}
+
+.NotepadPoint .right i {
+  font-size: 13px;
+}
+
+.NotepadPoint .right i:hover {
+  cursor: pointer;
+}
+
+.NotepadPoint .right .fa-pen {
+  color: var(--input-border-color);
+}
+
+.NotepadPoint .right .fa-trash {
+  color: var(--red);
+}
