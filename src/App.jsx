@@ -1,24 +1,24 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import { pageLinks } from "./site/pageLinks";
-import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
-import LecturePage from "./pages/LecturePage/LecturePage";
-import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import NotepadPage from "./pages/NotepadPage/NotepadPage";
-import { AuthProvider } from "./context/AuthContext";
-import { Flip, ToastContainer, Bounce } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Modal from "./components/Modal/Modal";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import { pageLinks } from './site/pageLinks';
+import AuthenticationPage from './pages/AuthenticationPage/AuthenticationPage';
+import LecturePage from './pages/LecturePage/LecturePage';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
+import NotepadPage from './pages/NotepadPage/NotepadPage';
+import { AuthProvider } from './context/AuthContext';
+import { Flip, ToastContainer, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Modal from './components/Modal/Modal';
 import {
   errorModal,
   inputModal,
   successModal,
   warningModal,
-} from "./utils/modal";
-import { useEffect } from "react";
-import Loader from "./components/Loader/Loader";
-import { hideLoader, showLoader } from "./utils/loader";
-import Navbar from "./components/Navbar/Navbar";
+} from './utils/modal';
+import { useEffect } from 'react';
+import Loader from './components/Loader/Loader';
+import { hideLoader, showLoader } from './utils/loader';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   useEffect(() => {}, []);
@@ -38,10 +38,6 @@ function App() {
               element={<AuthenticationPage />}
             />
             <Route
-              path={pageLinks.lecturePage.dynamicUrl}
-              element={<LecturePage />}
-            />
-            <Route
               path={pageLinks.dashboardPage.dynamicUrl}
               element={<DashboardPage />}
             />
@@ -51,7 +47,7 @@ function App() {
             />
           </Routes>
           <ToastContainer
-            position={window.innerWidth > 800 ? "bottom-left" : "top-center"}
+            position={window.innerWidth > 800 ? 'bottom-left' : 'top-center'}
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}

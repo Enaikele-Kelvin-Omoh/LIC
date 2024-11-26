@@ -1,2 +1,36 @@
 .DashboardPage {
+  padding: 0 5rem;
+  position: relative;
+}
+
+.dashboard-title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin: 3rem 0;
+}
+
+.all-courses {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 5rem;
+}
+
+.btn-create-course {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #303030;
+  position: absolute;
+  bottom: 10.5rem;
+  right: 7.5rem;
+}
+
+.create-course-icon {
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
 }
