@@ -16,19 +16,19 @@ const LecturePage = () => {
         <p className="file-name">Introduction to computer programing.pdf</p>
       </div>
       <div className="explanation-block">
-        <div className="outline-block">
+        <div className="outline-block fade-right">
           <CourseOutline />
         </div>
-        <div className="presentation-block">
+        <div className="presentation-block intro-anim-fade">
           <PresentationPreview
             onShowQuestionBox={() => setQuestionVisible(true)}
           />
         </div>
-        <div className="preview-block">
+        <div className="preview-block fade-left">
           <CoursePreview />
         </div>
       </div>
-      <div className="notepad-block">
+      <div className="notepad-block fade-up">
         <NotepadPreview />
       </div>
       <QuestionBox

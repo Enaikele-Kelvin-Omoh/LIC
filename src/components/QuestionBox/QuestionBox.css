@@ -1,8 +1,8 @@
 .QuestionBox {
   position: fixed;
   background-color: var(--background-color);
-  width: 62.7rem;
-  height: 51.6rem;
+  width: 627px;
+  height: 516px;
   border-radius: 10px;
 
   border: 0.5px solid var(--input-border-color);
@@ -22,7 +22,7 @@
   top: calc(-100%);
 }
 .QuestionBox textarea {
-  height: 8.7rem;
+  height: 87px;
   resize: none;
   margin-bottom: 14px;
   padding-top: 10px;

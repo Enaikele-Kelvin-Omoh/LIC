@@ -37,10 +37,6 @@
   color: var(--text-color);
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
   background-color: var(--background-color);
   overflow: hidden;
@@ -66,7 +62,7 @@ button {
 }
 
 button i {
-  margin-left: 0.9rem;
+  margin-left: 9px;
 }
 
 button:hover {
@@ -108,7 +104,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: var(--input-text-color);
+  /* color: var(--input-text-color); */
 }
 textarea {
   background-color: transparent;
@@ -133,4 +129,8 @@ textarea::placeholder {
 .custom-page {
   width: 100%;
   height: calc(100svh - 55px);
+}
+
+.Toastify__close-button {
+  width: fit-content;
 }

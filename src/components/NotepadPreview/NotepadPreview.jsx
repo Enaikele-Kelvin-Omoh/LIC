@@ -8,7 +8,7 @@ const NotepadPreview = () => {
         <p>Notes</p>
         <i className="fa-light fa-chevron-up"></i>
       </div>
-      <div className="body mt-4">
+      <div className="body mt-2">
         <NotepadPoint />
       </div>
       <div className="input">

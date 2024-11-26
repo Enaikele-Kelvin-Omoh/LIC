@@ -26,6 +26,7 @@
   align-items: center;
   gap: 20px;
   flex-shrink: 0;
+  margin-top: -10px;
 }
 
 .NotepadPreview .input textarea {

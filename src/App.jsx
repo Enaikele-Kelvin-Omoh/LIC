@@ -45,6 +45,10 @@ function App() {
               path={pageLinks.notepadPage.dynamicUrl}
               element={<NotepadPage />}
             />
+            <Route
+              path={pageLinks.lecturePage.dynamicUrl}
+              element={<LecturePage />}
+            />
           </Routes>
           <ToastContainer
             position={window.innerWidth > 800 ? 'bottom-left' : 'top-center'}

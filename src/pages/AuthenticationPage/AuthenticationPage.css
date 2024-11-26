@@ -7,10 +7,10 @@
 }
 
 .auth-container {
-  width: 38.9rem;
-  height: 47rem;
-  padding: 3.5rem;
-  border-radius: 2rem;
+  width: 389px;
+  height: 470px;
+  padding: 35px;
+  border-radius: 20px;
   background-color: var(--container-background-color);
   text-align: center;
 }
@@ -23,7 +23,7 @@
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 1.9rem;
+  gap: 19px;
 }
 
 .auth-email,
@@ -32,16 +32,16 @@
 }
 
 .auth-text {
-  margin-bottom: 1.4rem;
-  font-size: 2rem;
+  margin-bottom: 14px;
+  font-size: 20px;
 }
 
 .auth-action {
   display: flex;
   justify-content: center;
-  gap: 2.3rem;
-  margin-bottom: 3rem;
-  font-size: 1.4rem;
+  gap: 23px;
+  margin-bottom: 30px;
+  font-size: 14px;
   color: rgba(242, 242, 242, 0.31);
   cursor: pointer;
 }
@@ -52,25 +52,25 @@
 }
 
 .auth-logo {
-  margin-bottom: 1.4rem;
-  height: 4.5rem;
-  width: 4.5rem;
+  margin-bottom: 14px;
+  height: 45px;
+  width: 45px;
 }
 
 .auth-form .name-block {
   display: flex;
   width: 100%;
-  gap: 1.4rem;
+  gap: 14px;
 }
 
 .auth-btn-submit {
-  margin-top: 1.9rem;
+  margin-top: 19px;
 }
 
 .auth-form .form-block {
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
-  height: 15.7rem;
+  gap: 14px;
+  height: 157px;
 }
