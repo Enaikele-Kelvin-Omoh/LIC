@@ -1,5 +1,5 @@
-import emitter from "../emitter/emitter";
-import { generateUUID } from "./uuid";
+import emitter from '../emitter/emitter';
+import { generateUUID } from './uuid';
 
 export const successModal = (
   message,
@@ -7,17 +7,17 @@ export const successModal = (
   onButtonClick,
   canHide,
   onClose,
-  id
+  id,
 ) => {
   id = id || generateUUID();
   onClose = onClose || (() => {});
-  emitter.emit("modal", {
+  emitter.emit('modal', {
     message,
     buttonText,
     onButtonClick,
     id,
     canHide,
-    type: "success",
+    type: 'success',
     onClose,
   });
   return;
@@ -29,17 +29,17 @@ export const errorModal = (
   onButtonClick,
   canHide,
   onClose,
-  id
+  id,
 ) => {
   id = id || generateUUID();
   onClose = onClose || (() => {});
-  emitter.emit("modal", {
+  emitter.emit('modal', {
     message,
     buttonText,
     onButtonClick,
     id,
     canHide,
-    type: "error",
+    type: 'error',
     onClose,
   });
   return;
@@ -51,17 +51,17 @@ export const warningModal = (
   onButtonClick,
   canHide,
   onClose,
-  id
+  id,
 ) => {
   id = id || generateUUID();
   onClose = onClose || (() => {});
-  emitter.emit("modal", {
+  emitter.emit('modal', {
     message,
     buttonText,
     onButtonClick,
     id,
     canHide,
-    type: "warning",
+    type: 'warning',
     onClose,
   });
   return;
@@ -74,18 +74,18 @@ export const inputModal = (
   onButtonClick,
   canHide,
   onClose,
-  id
+  id,
 ) => {
   id = id || generateUUID();
   onClose = onClose || (() => {});
-  emitter.emit("modal", {
+  emitter.emit('modal', {
     title,
     fieldData,
     buttonText,
     onButtonClick,
     id,
     canHide,
-    type: "input",
+    type: 'input',
     onClose,
   });
   return;

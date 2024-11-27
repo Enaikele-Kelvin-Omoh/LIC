@@ -1,36 +1,37 @@
 .DashboardPage {
-  padding: 0 5rem;
+  padding: 0 50px;
   position: relative;
 }
 
 .dashboard-title {
-  font-size: 2.4rem;
+  font-size: 24px;
   font-weight: bold;
-  margin: 3rem 0;
+  margin: 30px 0;
 }
 
 .all-courses {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 5rem;
+  gap: 30px;
+  row-gap: 50px;
 }
 
 .btn-create-course {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 5rem;
-  height: 5rem;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background-color: #303030;
   position: absolute;
-  bottom: 10.5rem;
-  right: 7.5rem;
+  bottom: 105px;
+  right: 75px;
 }
 
 .create-course-icon {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 600;
   cursor: pointer;
 }
