@@ -17,8 +17,8 @@ const PresentationPreview = ({ onShowQuestionBox }) => {
           </button>
         </div>
       </div>
-      <div className="body flex flex-col gap-4">
-        <p className="title mb-4">Understanding Algorithms</p>
+      <div className="body flex flex-col gap-1">
+        <p className="title mb-1">Understanding Algorithms</p>
         <PowerPoint />
         <PowerPoint />
         <PowerPoint />

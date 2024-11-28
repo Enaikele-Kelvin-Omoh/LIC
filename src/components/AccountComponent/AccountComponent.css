@@ -1,62 +1,63 @@
 .AccountComponent {
   position: fixed;
-  top: 9.2rem;
-  width: 36.5rem;
-  height: 52.3rem;
+  top: 92px;
+  width: 365px;
+  height: 523px;
   background-color: #0a0a0a;
-  border-radius: 10rem;
+  border-radius: 100px;
   border: 1px solid var(--input-border-color);
   padding: 0 32px;
+  z-index: 300;
   transition: 1s ease;
 }
 
 .AccountComponent-active {
   position: fixed;
-  top: 9.2rem;
-  right: 2.8rem;
-  width: 36.5rem;
-  height: 52.3rem;
-  border-radius: 2.2rem;
+  top: 92px;
+  right: 28px;
+  width: 365px;
+  height: 523px;
+  border-radius: 22px;
   border: 1px solid var(--input-border-color);
   padding: 0 32px;
 }
 
 .AccountComponent-inactive {
   position: fixed;
-  top: 9.2rem;
-  right: calc(-100% - 2.8rem);
+  top: 92px;
+  right: calc(-100% - 28px);
 
-  width: 36.5rem;
-  height: 52.3rem;
+  width: 365px;
+  height: 523px;
   background-color: #0a0a0a;
-  border-radius: 1.7rem;
+  border-radius: 17px;
   border: 1px solid var(--input-border-color);
   padding: 0 32px;
 }
 
 .AccountComponent img {
-  width: 13rem;
-  height: 13rem;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
-  margin-top: 3.5rem;
+  margin-top: 35px;
   border-radius: 50%;
 }
 
 .AccountComponent .email {
   font-size: 12px;
   font-weight: 300;
-  margin-top: 2rem;
+  margin-top: 20px;
 }
 
 .AccountComponent .input-block {
-  margin-top: 2.1rem;
+  margin-top: 21px;
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
+  gap: 13px;
 }
 
 .AccountComponent button {
-  margin-top: 2.6rem;
+  margin-top: 26px;
 }
 
 .AccountComponent .signout-container {

@@ -45,6 +45,10 @@ function App() {
               path={pageLinks.notepadPage.dynamicUrl}
               element={<NotepadPage />}
             />
+            <Route
+              path={pageLinks.lecturePage.dynamicUrl}
+              element={<LecturePage />}
+            />
           </Routes>
           <ToastContainer
             position={window.innerWidth > 800 ? 'bottom-left' : 'top-center'}
@@ -59,6 +63,7 @@ function App() {
             theme="dark"
             transition={window.innerWidth > 800 ? Flip : Bounce}
           />
+          <Loader />
         </AuthProvider>
       </BrowserRouter>
     </div>

@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
-import "./Loader.css";
-import Logo from "../../assets/logo.png";
-import emitter from "../../emitter/emitter";
+import React, { useEffect, useState } from 'react';
+import './Loader.css';
+import Logo from '../../assets/logo.png';
+import emitter from '../../emitter/emitter';
 
 const Loader = () => {
   const [loaderData, setLoaderData] = useState([]);
 
   const addLoader = (data) => {
-    console.log(data);
-
     var prevLoaderData = [...loaderData];
     prevLoaderData.push(data);
     setLoaderData(prevLoaderData);
@@ -22,12 +20,12 @@ const Loader = () => {
   };
 
   useEffect(() => {
-    emitter.on("loader", (data) => addLoader(data));
-    emitter.on("hide-loader", (data) => removeLoader(data));
+    emitter.on('loader', (data) => addLoader(data));
+    emitter.on('hide-loader', (data) => removeLoader(data));
 
     return () => {
-      emitter.off("loader", (data) => addLoader(data));
-      emitter.off("hide-loader", (data) => removeLoader(data));
+      emitter.off('loader', (data) => addLoader(data));
+      emitter.off('hide-loader', (data) => removeLoader(data));
     };
   }, []);
   return (

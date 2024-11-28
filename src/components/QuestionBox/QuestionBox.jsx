@@ -3,8 +3,6 @@ import './QuestionBox.css';
 
 const QuestionBox = ({ visible, onHideQuestionBox }) => {
   const handleKeyPress = (e) => {
-    console.log(e);
-
     if (e.key === 'Escape') {
       onHideQuestionBox();
     }

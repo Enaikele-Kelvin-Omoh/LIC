@@ -1,11 +1,13 @@
-import emitter from "../emitter/emitter";
+import emitter from '../emitter/emitter';
 
 export const showLoader = (id, message) => {
   if (!id) return;
-  return emitter.emit("loader", { message, id });
+  console.log('Im emitting this');
+
+  emitter.emit('loader', { message, id });
 };
 
 export const hideLoader = (id) => {
   if (!id) return;
-  return emitter.emit("hide-loader", id);
+  return emitter.emit('hide-loader', id);
 };
