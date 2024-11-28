@@ -32,6 +32,11 @@
   gap: 10px;
 }
 
+.CourseOutline .outline-list .outline-item:hover > * {
+  color: var(--accent-color);
+  cursor: pointer;
+}
+
 .CourseOutline .outline-list .outline-item i {
   font-size: 15px;
   margin-top: 0px;

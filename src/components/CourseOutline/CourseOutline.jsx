@@ -90,7 +90,7 @@ const CourseOutline = () => {
         </div>
         <div className="outline-item">
           <i className="fa-solid fa-caret-right"></i>
-          <p>Understanding Algorithms</p>
+          <p>Understanding Algithms</p>
         </div>
       </div>
     </div>

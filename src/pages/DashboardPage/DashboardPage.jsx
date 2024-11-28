@@ -26,19 +26,19 @@ const DashboardPage = () => {
         console.log('Course Created:', data);
       }, // onButtonClick
       true, // canHide
-      () => console.log('Modal Closed'), // onClose
+      () => console.log('Modal Closed') // onClose
     );
   };
   return (
     <div className="DashboardPage">
-      <h2 className="dashboard-title">Registered Courses</h2>
-      <div className="all-courses">
+      <h2 className="dashboard-title fade-down">Registered Courses</h2>
+      <div className="all-courses fade-up">
         {Array.from({ length: 40 }, (_, i) => (
           <CourseFolder key={i} />
         ))}
 
         <div className="btn-create-course" onClick={handleCreateCourse}>
-          <i className="fa-solid fa-plus create-course-icon"></i>
+          <i className="fa-light fa-plus create-course-icon"></i>
         </div>
       </div>
     </div>

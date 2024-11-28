@@ -6,6 +6,7 @@
   padding: 10px 30px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 1;
 }
 
 .PresentationPreview .left-box {

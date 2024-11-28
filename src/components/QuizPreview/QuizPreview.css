@@ -1,0 +1,27 @@
+.QuizPreview {
+  background-color: var(--header-background-color);
+  height: 100%;
+  padding: 20px 32px;
+}
+
+.QuizPreview .head button {
+  height: 40px;
+  padding: 0 25px;
+}
+
+.QuizPreview .head p {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.QuizPreview .body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 25px;
+  overflow-y: scroll;
+}
+
+.QuizPreview .body::-webkit-scrollbar {
+  display: none;
+}

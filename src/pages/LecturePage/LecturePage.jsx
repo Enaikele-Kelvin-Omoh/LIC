@@ -5,11 +5,13 @@ import PresentationPreview from '../../components/PresentationPreview/Presentati
 import CoursePreview from '../../components/CoursePreview/CoursePreview';
 import NotepadPreview from '../../components/NotepadPreview/NotepadPreview';
 import QuestionBox from '../../components/QuestionBox/QuestionBox';
+import QuizPreview from '../../components/QuizPreview/QuizPreview';
 
 const LecturePage = () => {
   const [questionVisible, setQuestionVisible] = useState(false);
+  const [quizMode, setQuizMode] = useState(false);
   return (
-    <div className="LecturePage custom-page">
+    <div className="LecturePage ">
       <div className="location-block flex items-center">
         <p className="course-code">CSC201</p>
         <i className="fa-light fa-chevron-right"></i>
@@ -19,18 +21,25 @@ const LecturePage = () => {
         <div className="outline-block fade-right">
           <CourseOutline />
         </div>
+
         <div className="presentation-block intro-anim-fade">
-          <PresentationPreview
-            onShowQuestionBox={() => setQuestionVisible(true)}
-          />
+          {quizMode ? (
+            <QuizPreview />
+          ) : (
+            <PresentationPreview
+              onShowQuestionBox={() => setQuestionVisible(true)}
+            />
+          )}
         </div>
         <div className="preview-block fade-left">
-          <CoursePreview />
+          {!quizMode && <CoursePreview />}
         </div>
       </div>
-      <div className="notepad-block fade-up">
-        <NotepadPreview />
-      </div>
+      {!quizMode && (
+        <div className="notepad-block fade-up">
+          <NotepadPreview />
+        </div>
+      )}
       <QuestionBox
         visible={questionVisible}
         onHideQuestionBox={() => setQuestionVisible(false)}

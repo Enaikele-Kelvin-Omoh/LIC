@@ -64,6 +64,7 @@ function App() {
             transition={window.innerWidth > 800 ? Flip : Bounce}
           />
           <Loader />
+          <Modal />
         </AuthProvider>
       </BrowserRouter>
     </div>
