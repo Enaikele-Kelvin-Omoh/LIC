@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./Modal.css";
-import emitter from "../../emitter/emitter";
+import React, { useEffect, useState } from 'react';
+import './Modal.css';
+import emitter from '../../emitter/emitter';
 
 const Modal = () => {
   const [modalData, setModalData] = useState([]);
@@ -12,7 +12,7 @@ const Modal = () => {
 
     var prevModal = [...modalData];
     console.log(prevModal);
-    console.log("adding", data);
+    console.log('adding', data);
 
     prevModal.push(data);
     console.log(prevModal);
@@ -27,18 +27,18 @@ const Modal = () => {
   };
 
   useEffect(() => {
-    emitter.on("modal", (data) => addModal(data));
+    emitter.on('modal', (data) => addModal(data));
 
     return () => {
-      emitter.off("modal", (data) => addModal(data));
+      emitter.off('modal', (data) => addModal(data));
     };
-  }, []);
+  }, [addModal]);
   return (
     <>
       {modalData.map((data) => {
-        if (data.type === "success") {
+        if (data.type === 'success') {
           return (
-            <div className="Modal">
+            <div className="Modal" key="success">
               <SuccessModal
                 fieldData={data?.fieldData}
                 message={data?.message}
@@ -53,9 +53,9 @@ const Modal = () => {
               />
             </div>
           );
-        } else if (data.type === "error") {
+        } else if (data.type === 'error') {
           return (
-            <div className="Modal">
+            <div className="Modal" key="error">
               <ErrorModal
                 fieldData={data?.fieldData}
                 message={data?.message}
@@ -70,9 +70,9 @@ const Modal = () => {
               />
             </div>
           );
-        } else if (data.type === "warning") {
+        } else if (data.type === 'warning') {
           return (
-            <div className="Modal">
+            <div className="Modal" key="warning">
               <WarningModal
                 fieldData={data?.fieldData}
                 message={data?.message}
@@ -87,9 +87,9 @@ const Modal = () => {
               />
             </div>
           );
-        } else if (data.type === "input") {
+        } else if (data.type === 'input') {
           return (
-            <div className="Modal">
+            <div className="Modal" key="input">
               <InputModal
                 title={data.title}
                 fieldData={data?.fieldData}
@@ -132,7 +132,7 @@ const SuccessModal = ({ onHide, onClickButton, message, buttonText }) => {
             onHide(true);
           }}
         >
-          {buttonText || "Okay"}
+          {buttonText || 'Okay'}
         </button>
       </div>
     </div>
@@ -159,7 +159,7 @@ const ErrorModal = ({ onHide, onClickButton, message, buttonText }) => {
             onHide(true);
           }}
         >
-          {buttonText || "Okay"}
+          {buttonText || 'Okay'}
         </button>
       </div>
     </div>
@@ -186,7 +186,7 @@ const WarningModal = ({ onHide, onClickButton, message, buttonText }) => {
             onHide(true);
           }}
         >
-          {buttonText || "Okay"}
+          {buttonText || 'Okay'}
         </button>
       </div>
     </div>
@@ -200,14 +200,14 @@ const InputModal = ({
   onClickButton,
   onHide,
 }) => {
-  const [text, setText] = useState([""]);
+  const [text, setText] = useState(['']);
 
   useEffect(() => {
-    setText(new Array(fieldData.length).fill(""));
+    setText(new Array(fieldData.length).fill(''));
   }, [fieldData]);
 
   const handleResetText = () => {
-    setText((p) => new Array(p.length).fill(""));
+    setText((p) => new Array(p.length).fill(''));
   };
 
   const changeTextAtIndex = (index, value) => {
@@ -221,7 +221,7 @@ const InputModal = ({
         <i className="fa-solid fa-xmark" onClick={() => onHide(false)}></i>
       </div>
       <div className="title-block flex justify-center  ">
-        <p>{title || ""}</p>
+        <p>{title || ''}</p>
       </div>
 
       <div className="input-block w-full mt-6 flex flex-col gap-3">
@@ -230,7 +230,7 @@ const InputModal = ({
             <p>{data.label}</p>
             <input
               type="text"
-              placeholder={data.placeholder || "Value here"}
+              placeholder={data.placeholder || 'Value here'}
               value={text[index]}
               onChange={(e) => changeTextAtIndex(index, e.target.value)}
             />
@@ -245,7 +245,7 @@ const InputModal = ({
             onHide(true);
           }}
         >
-          {buttonText || "Okay"}
+          {buttonText || 'Okay'}
         </button>
       </div>
     </div>
