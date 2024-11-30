@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import './QuestionBox.css';
+import { resumeSpeech } from '../../responsiveVoice/responsiveVoice';
 
 const QuestionBox = ({ visible, onHideQuestionBox }) => {
   const handleKeyPress = (e) => {
     if (e.key === 'Escape') {
       onHideQuestionBox();
+      resumeSpeech();
     }
   };
   useEffect(() => {

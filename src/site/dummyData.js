@@ -132,9 +132,10 @@ export const notepadContent = {
 };
 
 export const explanation = {
+  assimilation: 60,
   courseCode: 'CSC102',
   pdfTitle: 'Introduction.pdf',
-  notepsdId: '12344556677',
+  notepadId: '12344556677',
   outline: [
     {
       isQuiz: false,
@@ -150,6 +151,7 @@ export const explanation = {
       Optimization algorithms (e.g., Dynamic Programming) for maximizing or minimizing objectives.
       Effective algorithms are clear, concise, and optimized for the task they perform. A good understanding of algorithms helps developers and engineers build robust and efficient software, making them essential in the field of computing.`,
       covered: false,
+      completed: false,
       powerPoint: [
         {
           data: 'An algorithm is a finite, step-by-step procedure to solve a problem or complete a task.',
@@ -176,8 +178,11 @@ export const explanation = {
     {
       isQuiz: false,
       title: 'What is a system?',
-      explanation: ``,
+      explanation: `A system is a set of interconnected components that work together to achieve a specific goal. Systems can be found in various domains, including technology, biology, and management, where they organize and coordinate different elements for efficient functioning. In computing, a system often refers to a combination of hardware, software, and processes that collectively handle tasks, solve problems, or provide services.
+
+      The components of a system interact in a structured manner, with defined inputs, processes, and outputs. A well-designed system is efficient, scalable, and reliable, ensuring smooth operations and adaptability to changing requirements. Systems can be simple or complex, depending on the number of interacting components and their relationships.`,
       covered: false,
+      completed: false,
       powerPoint: [
         {
           data: 'A system is a set of interconnected components that work together to achieve a specific goal.',
@@ -189,46 +194,56 @@ export const explanation = {
         },
         {
           data: 'In computing, a system combines hardware, software, and processes to perform tasks or provide services.',
-          time: 3000,
+          time: 5000,
         },
         {
           data: 'Key elements of a system include inputs, processes, and outputs, ensuring structured and efficient operation.',
-          time: 4000,
+          time: 8000,
         },
         {
           data: 'Well-designed systems are efficient, scalable, and reliable, adapting to changing requirements and demands.',
-          time: 5000,
+          time: 9000,
         },
       ],
     },
     {
       isQuiz: true,
       title: 'A quiz on algorithms',
+      graded: false,
       score: null,
       quiz: [
         {
-          question: 'Question goes here',
-          options: ['option 1', 'option 2', 'option 3', 'option 4'],
-          answer: 'option 3',
-          response: 'option 1',
+          question:
+            'France is a country in Western Europe that is famous for its culture, art, and history. Among its many cities, one serves as the capital and is also known as the "City of Light." What is the name of the capital city of France?',
+          options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
+          answer: 'Paris',
+          response: null,
         },
         {
-          question: 'Question goes here',
-          options: ['option 1', 'option 2', 'option 3', 'option 4'],
-          answer: 'option 1',
-          response: 'option 1',
+          question:
+            'In our solar system, there is a planet characterized by its reddish appearance due to iron oxide on its surface. This planet is often referred to as the "Red Planet" and is the fourth planet from the Sun. Which planet is this?',
+          options: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
+          answer: 'Mars',
+          response: null,
         },
         {
-          question: 'Question goes here',
-          options: ['option 1', 'option 2', 'option 3', 'option 4'],
-          answer: 'option 1',
-          response: 'option 1',
+          question:
+            'One of the most famous plays in literature tells the tragic story of two young lovers whose families are bitter rivals. This work was written by a celebrated English playwright of the late 16th century. What is the name of the author of "Romeo and Juliet"?',
+          options: [
+            'William Wordsworth',
+            'William Shakespeare',
+            'Charles Dickens',
+            'Jane Austen',
+          ],
+          answer: 'William Shakespeare',
+          response: null,
         },
         {
-          question: 'Question goes here',
-          options: ['option 1', 'option 2', 'option 3', 'option 4'],
-          answer: 'option 1',
-          response: 'option 1',
+          question:
+            'The largest animal on Earth is a marine mammal known for its enormous size and ability to produce loud, low-pitched sounds. This animal can grow up to 100 feet in length and weighs more than 150 tons. What is the name of this mammal?',
+          options: ['Elephant', 'Blue Whale', 'Giraffe', 'Hippopotamus'],
+          answer: 'Blue Whale',
+          response: null,
         },
       ],
     },

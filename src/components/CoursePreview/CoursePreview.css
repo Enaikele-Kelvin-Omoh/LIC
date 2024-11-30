@@ -1,2 +1,14 @@
 .CoursePreview {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.CoursePreview::-webkit-scrollbar {
+  display: none;
+}
+
+.CoursePreview p {
+  font-size: 12px;
+  white-space: pre-wrap;
+  align-items: start;
 }

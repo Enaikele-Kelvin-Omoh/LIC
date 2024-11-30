@@ -10,6 +10,7 @@
   --text-color: #fff;
 
   --accent-color: #324cdc;
+  --accent-color-light: #5972ff;
 
   --header-background-color: #1f1f1f;
 
@@ -73,6 +74,17 @@ button:hover {
 
 button:active {
   transform: scale(0.5);
+}
+
+button:disabled {
+  opacity: 0.5;
+}
+
+button:disabled:hover {
+  transform: none;
+}
+button:disabled:active {
+  transform: none;
 }
 
 .btn-2 {

@@ -25,3 +25,24 @@
 .QuizPreview .body::-webkit-scrollbar {
   display: none;
 }
+
+.QuizPreview .right .score-box {
+  font-size: 14px;
+  font-weight: 400;
+}
+.QuizPreview .right .score-box .score {
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.QuizPreview .right .score-box .red {
+  color: rgb(255, 114, 114);
+}
+
+.QuizPreview .right .score-box .yellow {
+  color: rgb(255, 217, 0);
+}
+
+.QuizPreview .right .score-box .green {
+  color: rgb(13, 255, 0);
+}

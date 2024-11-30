@@ -15,10 +15,19 @@
 
 .NotepadPreview .heading i {
   font-size: 15px;
+  cursor: pointer;
 }
 .NotepadPreview .body {
   width: 100%;
   height: 100%;
+  overflow: scroll;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
 }
 
 .NotepadPreview .input {
@@ -73,6 +82,7 @@
 
 .NotepadPoint .right i {
   font-size: 13px;
+  cursor: pointer;
 }
 
 .NotepadPoint .right i:hover {

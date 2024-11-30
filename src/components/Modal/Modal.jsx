@@ -114,7 +114,7 @@ const Modal = () => {
 
 const SuccessModal = ({ onHide, onClickButton, message, buttonText }) => {
   return (
-    <div className="SuccessModal modal-container">
+    <div className="SuccessModal modal-container fade">
       <div className="cancel-block">
         <i className="fa-solid fa-xmark" onClick={() => onHide(false)}></i>
       </div>
@@ -141,7 +141,7 @@ const SuccessModal = ({ onHide, onClickButton, message, buttonText }) => {
 
 const ErrorModal = ({ onHide, onClickButton, message, buttonText }) => {
   return (
-    <div className="ErrorModal modal-container">
+    <div className="ErrorModal modal-container fade">
       <div className="cancel-block">
         <i className="fa-solid fa-xmark" onClick={() => onHide(false)}></i>
       </div>
@@ -168,7 +168,7 @@ const ErrorModal = ({ onHide, onClickButton, message, buttonText }) => {
 
 const WarningModal = ({ onHide, onClickButton, message, buttonText }) => {
   return (
-    <div className="WarningModal modal-container">
+    <div className="WarningModal modal-container fade">
       <div className="cancel-block">
         <i className="fa-solid fa-xmark" onClick={() => onHide(false)}></i>
       </div>
@@ -216,7 +216,7 @@ const InputModal = ({
     setText(prevText);
   };
   return (
-    <div className="InputModal modal-container">
+    <div className="InputModal modal-container fade">
       <div className="cancel-block">
         <i className="fa-solid fa-xmark" onClick={() => onHide(false)}></i>
       </div>

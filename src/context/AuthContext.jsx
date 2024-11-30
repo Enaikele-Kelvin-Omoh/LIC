@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebase/config';
 import { createAccount, liveAccountData } from '../controllers/account';
+import { endSpeech } from '../responsiveVoice/responsiveVoice';
 
 export const authContext = createContext();
 
@@ -49,6 +50,12 @@ export const AuthProvider = ({ children }) => {
 
     liveAccountData(userCredential.uid, (data) => setUserLiveData(data));
   }, [userCredential]);
+
+  useEffect(() => {
+    if (location.pathname !== pageLinks.lecturePage.baseUrl) {
+      endSpeech();
+    }
+  }, [location]);
 
   const signup = ({ email, password, firstname, lastname }, setLoading) => {
     return new Promise(async (resolve, reject) => {

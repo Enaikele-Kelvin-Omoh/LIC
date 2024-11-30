@@ -14,6 +14,15 @@
   font-weight: 600;
 }
 
+.CourseOutline .heading i {
+  font-size: 20px;
+  color: var(--accent-color);
+}
+
+.CourseOutline .heading i:hover {
+  cursor: pointer;
+}
+
 .CourseOutline .outline-list {
   display: flex;
   flex-direction: column;
@@ -30,6 +39,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  opacity: 0.4;
+}
+
+.CourseOutline .outline-list .covered-item {
+  opacity: 1;
+}
+
+.CourseOutline .outline-list .selected-item {
+  opacity: 1;
+}
+
+.CourseOutline .outline-list .selected-item i {
+  color: var(--accent-color);
 }
 
 .CourseOutline .outline-list .outline-item:hover > * {

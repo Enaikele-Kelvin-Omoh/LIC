@@ -39,3 +39,14 @@
 .Option i {
   font-size: 12px;
 }
+
+.selected-option > * {
+  color: var(--accent-color-light);
+}
+
+.correct-option > * {
+  color: rgb(9, 207, 9);
+}
+.wrong-option > * {
+  color: rgb(255, 44, 44);
+}

@@ -1,36 +1,75 @@
 import React from 'react';
 import './QuestionComponent.css';
 
-const QuestionComponent = () => {
+const QuestionComponent = ({
+  index,
+  question,
+  options,
+  answer,
+  response,
+  isGraded,
+  onSelectOption,
+}) => {
   return (
     <div className="QuestionComponent">
       <div className="left">
-        <p>1.</p>
+        <p>{index + 1}.</p>
       </div>
       <div className="right">
-        <p className="question">
-          How does humanity's beauty manifest in its diversity, resilience, and
-          compassion? In what ways do acts of kindness, the pursuit of meaning
-          through art and science, and the ability to overcome challenges
-          highlight the profound strength and interconnectedness of the human
-          experience despite its imperfections?
-        </p>
+        <p className="question">{question}</p>
         <div className="options">
-          <Option />
-          <Option />
-          <Option />
-          <Option />
+          {isGraded ? (
+            <>
+              {options?.map((data) => (
+                <OptionReviewed
+                  option={data}
+                  isCorrect={data === answer}
+                  isSelected={data === response}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              {options?.map((data) => (
+                <Option
+                  option={data}
+                  onClick={() => onSelectOption(index, data)}
+                  isSelected={data === response}
+                />
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-const Option = () => {
+const Option = ({ option, onClick, isSelected }) => {
   return (
-    <div className="Option">
+    <div
+      className={`Option ${isSelected ? 'selected-option ' : ''}`}
+      onClick={onClick}
+    >
       <i className="fa-regular fa-circle-dot"></i>
-      <p>Option I thought of</p>
+      <p>{option}</p>
+    </div>
+  );
+};
+
+const OptionReviewed = ({ option, isSelected, isCorrect }) => {
+  return (
+    <div
+      className={`Option ${
+        isCorrect
+          ? 'correct-option '
+          : isSelected && !isCorrect
+          ? 'wrong-option'
+          : ''
+      }`}
+    >
+      <i className="fa-regular fa-circle-dot"></i>
+      <p>{option}</p>
     </div>
   );
 };
