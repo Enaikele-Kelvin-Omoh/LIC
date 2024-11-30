@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './LecturePage.css';
 import CourseOutline from '../../components/CourseOutline/CourseOutline';
 import PresentationPreview from '../../components/PresentationPreview/PresentationPreview';
-import CoursePreview from '../../components/CoursePreview/CoursePreview';
+
 import NotepadPreview from '../../components/NotepadPreview/NotepadPreview';
 import QuestionBox from '../../components/QuestionBox/QuestionBox';
 import QuizPreview from '../../components/QuizPreview/QuizPreview';
@@ -16,6 +16,7 @@ import {
   startSpeech,
 } from '../../responsiveVoice/responsiveVoice';
 import { gradeQuiz } from '../../utils/quiGrader';
+import LectureCoursePreview from '../../components/LectureCoursePreview/LectureCoursePreview';
 
 const LecturePage = () => {
   const notepadRef = useRef(null);
@@ -171,7 +172,7 @@ const LecturePage = () => {
         </div>
         <div className="preview-block fade-left">
           {!lectureData?.outline[currentLectureIndex]?.isQuiz && (
-            <CoursePreview
+            <LectureCoursePreview
               content={lectureData?.outline[currentLectureIndex]?.explanation}
             />
           )}

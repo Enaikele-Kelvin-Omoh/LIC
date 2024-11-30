@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './CoursePreview.css';
+import './LectureCoursePreview.css';
 import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
-const CoursePreview = ({ content }) => {
+const LectureCoursePreview = ({ content }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -18,10 +18,10 @@ const CoursePreview = ({ content }) => {
 
   if (!content) return <LoadingComponent />;
   return (
-    <div className={`CoursePreview ${isAnimating ? 'fade-left' : ''}`}>
+    <div className={`LectureCoursePreview ${isAnimating ? 'fade-left' : ''}`}>
       <p>{content}</p>
     </div>
   );
 };
 
-export default CoursePreview;
+export default LectureCoursePreview;

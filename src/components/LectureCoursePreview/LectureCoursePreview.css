@@ -1,13 +1,13 @@
-.CoursePreview {
+.LectureCoursePreview {
   overflow-y: scroll;
   height: 100%;
 }
 
-.CoursePreview::-webkit-scrollbar {
+.LectureCoursePreview::-webkit-scrollbar {
   display: none;
 }
 
-.CoursePreview p {
+.LectureCoursePreview p {
   font-size: 12px;
   white-space: pre-wrap;
   align-items: start;
