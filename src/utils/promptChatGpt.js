@@ -27,6 +27,7 @@ const promptChatGpt = (system, prompt) => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+
               Authorization: 'Bearer ' + `${import.meta.env.VITE_KEY}`,
             },
             body: JSON.stringify(apiRequestBody),
