@@ -25,6 +25,8 @@ const DashboardPage = () => {
       const id = await storeFile(pdfBlob);
       console.log(id);
       const blob = await getFile(id);
+
+      showLoader('cccc');
       await createNewCourse(
         pdfBlob,
         coursePreviewData.courseCode,
@@ -38,6 +40,8 @@ const DashboardPage = () => {
     } catch (error) {
       console.error(error);
       toast.error('Could not add document');
+    } finally {
+      hideLoader('cccc');
     }
   };
 
@@ -65,6 +69,7 @@ const DashboardPage = () => {
         } catch (error) {
           console.error(error);
           toast.error("Couldn't create lecture");
+        } finally {
         }
       }, // onButtonClick
       true, // canHide

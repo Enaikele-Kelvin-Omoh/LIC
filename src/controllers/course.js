@@ -6,7 +6,11 @@ import {
   updateDocumentById,
 } from '../firebase/firebaseTools';
 import { extractText, splitTextIntoChunks } from '../pdf/pdfExtractor';
-import { generateOutlines } from './generation';
+import {
+  generateOutlines,
+  generateSummaries,
+  generateSummary,
+} from './generation';
 
 export const validateCourse = (uid, courseId) => {
   return new Promise(async (resolve, reject) => {
@@ -62,6 +66,9 @@ export const createNewCourse = (
       // Generate chunks
       const chunk = splitTextIntoChunks(text);
 
+      // Generate summary for each chunk
+      const summary = await generateSummaries(chunk);
+
       // generate outline for each chunk
       const outline = await generateOutlines(chunk);
 
@@ -71,6 +78,7 @@ export const createNewCourse = (
         courseCode,
         notepadId,
         outline,
+        summary,
         pdfTitle: `${blob.name}`,
         uid,
       };

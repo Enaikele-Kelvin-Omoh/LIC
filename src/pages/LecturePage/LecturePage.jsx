@@ -148,8 +148,13 @@ const LecturePage = () => {
 
       if (currentLectureData.explanation === '' && !currentLectureData.isQuiz) {
         console.log('FIlling up sir');
-        currentLectureData.explanation = await generateExplanation('', '');
-        currentLectureData.powerPoint = await generatePowerpoint();
+        currentLectureData.explanation = await generateExplanation(
+          lectureData?.outline[currentLectureIndex || 0].title,
+          lectureData?.summary
+        );
+        currentLectureData.powerPoint = await generatePowerpoint(
+          currentLectureData.explanation
+        );
 
         const tempLectureData = { ...localLectureData };
         console.log(tempLectureData, currentLectureIndex);
@@ -159,7 +164,10 @@ const LecturePage = () => {
         setLectureData(tempLectureData);
       } else if (currentLectureData.isQuiz) {
         console.log('FIlling up sir');
-        currentLectureData.quiz = await generateQuiz('');
+        currentLectureData.quiz = await generateQuiz(
+          lectureData?.summaries,
+          currentLectureIndex
+        );
 
         const tempLectureData = { ...lectureData };
         (tempLectureData.outline[currentLectureIndex] = currentLectureData),

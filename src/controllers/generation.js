@@ -1,15 +1,25 @@
 import { explanation } from '../site/dummyData';
+import promptChatGpt from '../utils/promptChatGpt';
 
-export const generateExplanation = (outlineTitle, chunk) => {
+export const generateExplanation = (outlineTitle, summaries) => {
   return new Promise(async (resolve, reject) => {
     try {
+      const prompt = `
+      Generate me a comprehensive but yet brief explanation on "${outlineTitle}", using relevant information from ${JSON.stringify(
+        summaries
+      )}. Neglect all information that does not involve the topic .write up to 200 words explanation
+      `;
       console.log('Generating explantion');
+      console.log(prompt);
 
-      setTimeout(() => {
-        resolve(`A system is a set of interconnected components that work together to achieve a specific goal. Systems can be found in various domains, including technology, biology, and management, where they organize and coordinate different elements for efficient functioning. In computing, a system often refers to a combination of hardware, software, and processes that collectively handle tasks, solve problems, or provide services.
+      const res = await promptChatGpt(
+        'generate response like a lecturer. Do not use mark down formatting. Write in paragraphs',
+        prompt
+      );
 
-        The components of a system interact in a structured manner, with defined inputs, processes, and outputs. A well-designed system is efficient, scalable, and reliable, ensuring smooth operations and adaptability to changing requirements. Systems can be simple or complex, depending on the number of interacting components and their relationships.`);
-      }, 500);
+      console.log(res);
+
+      resolve(res);
     } catch (error) {
       console.error(error);
       reject(error);
@@ -18,12 +28,12 @@ export const generateExplanation = (outlineTitle, chunk) => {
 };
 
 export const generatePowerpoint = (explanation) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       console.log('generatePowerpoint');
-
-      setTimeout(() => {
-        resolve([
+      const prompt = `
+      Generate me an array of major points that looks like this:
+      [
           {
             data: 'A system is a set of interconnected components that work together to achieve a specific goal.',
             time: 1000,
@@ -44,8 +54,20 @@ export const generatePowerpoint = (explanation) => {
             data: 'Well-designed systems are efficient, scalable, and reliable, adapting to changing requirements and demands.',
             time: 5000,
           },
-        ]);
-      }, 500);
+        ]
+
+        from the following explanation:"${explanation}"
+      `;
+      console.log(prompt);
+
+      const resp = await promptChatGpt(
+        'Generate a javascript array. Do not include heading or markdown formatting. Make your response suitable for JSON parsing.',
+        prompt
+      );
+
+      const ans = JSON.parse(resp);
+      console.log(ans);
+      resolve(ans);
     } catch (error) {
       console.error(error);
       reject(error);
@@ -53,7 +75,7 @@ export const generatePowerpoint = (explanation) => {
   });
 };
 
-export const generateQuiz = (chunk) => {
+export const generateQuiz = (chunk, index) => {
   return new Promise((resolve, reject) => {
     try {
       console.log('generating quiz');
@@ -102,15 +124,53 @@ export const generateQuiz = (chunk) => {
   });
 };
 
-export const generateOutline = (segment) => {
-  return new Promise((resolve, reject) => {
+export const generateSummary = (chunk) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      setTimeout(() => {
-        resolve([
+      const prompt = `
+      Generate me a summary that encapsulate the whole information stated within this portion of a document
+
+      ${chunk}
+      `;
+      const resp = await promptChatGpt(
+        'generate a prose without a heading or markdown structure. Just paragraph',
+        prompt
+      );
+      console.log(resp);
+
+      resolve(resp);
+    } catch (error) {
+      console.error(error);
+      reject(error);
+    }
+  });
+};
+
+export const generateSummaries = (chunks) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const summaryPromise = chunks.map((chunk) => generateSummary(chunk));
+      const summaries = await Promise.all(summaryPromise);
+
+      resolve(summaries);
+    } catch (error) {
+      console.error(error);
+      reject(error);
+    }
+  });
+};
+
+export const generateOutline = (segment) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const prompt = `
+      for an outline from a pdf generate me data like this:
+
+      [
           {
             isQuiz: false,
             title: 'What is Algorithm?',
-            explanation: ``,
+            explanation: "",
             covered: false,
             completed: false,
             powerPoint: [],
@@ -118,7 +178,7 @@ export const generateOutline = (segment) => {
           {
             isQuiz: false,
             title: 'What is a system?',
-            explanation: ``,
+            explanation: "",
             covered: false,
             completed: false,
             powerPoint: [],
@@ -130,8 +190,24 @@ export const generateOutline = (segment) => {
             score: null,
             quiz: [],
           },
-        ]);
-      }, 500);
+        ]
+
+        Leave every field except title blank, Populate this array by modifying the value of title to suit the following information:
+
+        ${segment}.
+
+        Generate an array for me
+      `;
+      const resp = await promptChatGpt(
+        'Generate a javascript array. Do not include heading or markdown formatting. Make your response suitable for JSON parsing.',
+        prompt
+      );
+
+      console.log(resp);
+
+      const ans = JSON.parse(resp);
+      console.log(ans);
+      resolve(ans);
     } catch (error) {
       console.error(error);
       reject(error);
