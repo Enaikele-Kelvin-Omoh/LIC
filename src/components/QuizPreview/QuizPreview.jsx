@@ -1,6 +1,7 @@
 import React from 'react';
 import './QuizPreview.css';
 import QuestionComponent from '../QuestionComponent/QuestionComponent';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
 
 const QuizPreview = ({ currentLectureData, onSelectOption, onSubmitQuiz }) => {
   return (
@@ -31,17 +32,23 @@ const QuizPreview = ({ currentLectureData, onSelectOption, onSubmitQuiz }) => {
         </div>
       </div>
       <div className="body">
-        {currentLectureData?.quiz?.map((data, index) => (
-          <QuestionComponent
-            index={index}
-            question={data?.question}
-            options={data?.options}
-            answer={data?.answer}
-            response={data?.response}
-            isGraded={currentLectureData?.graded}
-            onSelectOption={onSelectOption}
-          />
-        ))}
+        {currentLectureData?.quiz.length > 0 ? (
+          <>
+            {currentLectureData?.quiz?.map((data, index) => (
+              <QuestionComponent
+                index={index}
+                question={data?.question}
+                options={data?.options}
+                answer={data?.answer}
+                response={data?.response}
+                isGraded={currentLectureData?.graded}
+                onSelectOption={onSelectOption}
+              />
+            ))}
+          </>
+        ) : (
+          <LoadingComponent />
+        )}
       </div>
     </div>
   );

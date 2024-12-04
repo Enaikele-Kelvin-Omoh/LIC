@@ -68,17 +68,25 @@ const PresentationPreview = ({
         </div>
       </div>
       <div className="body flex flex-col gap-1">
-        <p className="title mb-1">{lectureData?.outline[currentIndex].title}</p>
+        <p className="title mb-1">
+          {lectureData?.outline[currentIndex || 0].title}
+        </p>
         <div className="flex flex-col gap-3 power-point-wrapper">
-          {powerPoints.map((data) => (
-            <PowerPoint
-              point={data}
-              onClick={() => {
-                toast.success('Successfully added');
-                onAddPoint(data);
-              }}
-            />
-          ))}
+          {powerPoints.length > 0 ? (
+            <>
+              {powerPoints.map((data) => (
+                <PowerPoint
+                  point={data}
+                  onClick={() => {
+                    toast.success('Successfully added');
+                    onAddPoint(data);
+                  }}
+                />
+              ))}
+            </>
+          ) : (
+            <LoadingComponent />
+          )}
         </div>
       </div>
     </div>

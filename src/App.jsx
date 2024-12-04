@@ -6,7 +6,7 @@ import LecturePage from './pages/LecturePage/LecturePage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import NotepadPage from './pages/NotepadPage/NotepadPage';
 import { AuthProvider } from './context/AuthContext';
-import { Flip, ToastContainer, Bounce } from 'react-toastify';
+import { Flip, ToastContainer, Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from './components/Modal/Modal';
 import {
@@ -19,6 +19,49 @@ import { useEffect } from 'react';
 import Loader from './components/Loader/Loader';
 import { hideLoader, showLoader } from './utils/loader';
 import Navbar from './components/Navbar/Navbar';
+import { addDocument } from './firebase/firebaseTools';
+
+const handleButtonClick = async () => {
+  try {
+    const dataToPush = {
+      assimilation: 100,
+      courseCode: 'CSC102',
+      pdfTitle: 'Introduction.pdf',
+      notepadId: 'qVYgKNPSTT9PejI5865L',
+      outline: [
+        {
+          isQuiz: false,
+          title: 'What is Algorithm?',
+          explanation: ``,
+          covered: false,
+          completed: false,
+          powerPoint: [],
+        },
+        {
+          isQuiz: false,
+          title: 'What is a system?',
+          explanation: ``,
+          covered: false,
+          completed: false,
+          powerPoint: [],
+        },
+        {
+          isQuiz: true,
+          title: 'A quiz on algorithms',
+          graded: false,
+          score: null,
+          quiz: [],
+        },
+      ],
+    };
+
+    const id = await addDocument('Course', dataToPush);
+    alert;
+  } catch (error) {
+    console.error(error);
+    toast.error('AHHHHHHHHH');
+  }
+};
 
 function App() {
   useEffect(() => {}, []);
@@ -27,6 +70,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <AuthProvider>
+          {/* <button onClick={handleButtonClick}>Button</button> */}
           <Navbar />
           <Routes>
             <Route

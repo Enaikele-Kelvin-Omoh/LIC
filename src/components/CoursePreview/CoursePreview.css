@@ -5,8 +5,6 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
 }
 
 .course-preview-container {
@@ -19,6 +17,7 @@
   /* left: 30%;
   top: 25%; */
   padding: 38px;
+  height: 450px;
 }
 
 .course-header {
@@ -32,6 +31,10 @@
   align-items: center;
   gap: 7px;
   margin-bottom: 23px;
+}
+
+.course-preview-pdfs:hover {
+  cursor: pointer;
 }
 
 .course-preview-code {

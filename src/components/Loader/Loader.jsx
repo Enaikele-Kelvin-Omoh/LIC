@@ -2,37 +2,45 @@ import React, { useEffect, useState } from 'react';
 import './Loader.css';
 import Logo from '../../assets/logo.png';
 import emitter from '../../emitter/emitter';
+import { useFetcher } from 'react-router-dom';
 
 const Loader = () => {
   const [loaderData, setLoaderData] = useState([]);
 
   const addLoader = (data) => {
-    var prevLoaderData = [...loaderData];
-    prevLoaderData.push(data);
-    setLoaderData(prevLoaderData);
+    console.log('Adding loader:', data);
+    setLoaderData((prev) => [...prev, data]);
   };
 
   const removeLoader = (id) => {
-    var prevLoaderData = [...loaderData];
-    const newLoaderData = prevLoaderData.filter((loaderId) => id !== loaderId);
-
-    setLoaderData(newLoaderData);
+    console.log('Removing loader with id:', id);
+    setLoaderData((prev) => prev.filter((loader) => loader.id !== id));
   };
 
   useEffect(() => {
-    emitter.on('loader', (data) => addLoader(data));
-    emitter.on('hide-loader', (data) => removeLoader(data));
+    const onAddLoader = (data) => addLoader(data);
+    const onRemoveLoader = (id) => removeLoader(id);
+
+    emitter.on('loader', onAddLoader);
+    emitter.on('hide-loader', onRemoveLoader);
 
     return () => {
-      emitter.off('loader', (data) => addLoader(data));
-      emitter.off('hide-loader', (data) => removeLoader(data));
+      emitter.off('loader', onAddLoader);
+      emitter.off('hide-loader', onRemoveLoader);
     };
   }, []);
+
+  useEffect(() => {
+    // console.log('change');
+
+    setLoaderData(loaderData);
+  }, [loaderData]);
+
   return (
     <>
       {loaderData.map((data) => (
-        <div className="Loader">
-          <img src={Logo} alt="" className="anim-infinite-scale" />
+        <div key={data.id} className="Loader">
+          <img src={Logo} alt="Loader logo" className="anim-infinite-scale" />
           <p>{data.message}</p>
         </div>
       ))}

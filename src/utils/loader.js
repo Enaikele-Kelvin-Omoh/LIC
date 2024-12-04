@@ -2,7 +2,7 @@ import emitter from '../emitter/emitter';
 
 export const showLoader = (id, message) => {
   if (!id) return;
-  console.log('Im emitting this');
+  console.log('Im emitting this ' + id);
 
   emitter.emit('loader', { message, id });
 };

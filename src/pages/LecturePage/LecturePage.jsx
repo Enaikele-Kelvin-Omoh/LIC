@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useDebugValue, useEffect, useRef, useState } from 'react';
 import './LecturePage.css';
 import CourseOutline from '../../components/CourseOutline/CourseOutline';
 import PresentationPreview from '../../components/PresentationPreview/PresentationPreview';
@@ -17,33 +17,32 @@ import {
 } from '../../responsiveVoice/responsiveVoice';
 import { gradeQuiz } from '../../utils/quiGrader';
 import LectureCoursePreview from '../../components/LectureCoursePreview/LectureCoursePreview';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate, useParams } from 'react-router-dom';
+import { updateCourse, validateCourse } from '../../controllers/course';
+import {
+  generateExplanation,
+  generatePowerpoint,
+  generateQuiz,
+} from '../../controllers/generation';
+import { fetchNotepad, updateNotepad } from '../../controllers/notepad';
 
 const LecturePage = () => {
   const notepadRef = useRef(null);
-  const [questionVisible, setQuestionVisible] = useState(false);
+  const { userCredential } = useAuth();
+  const params = useParams();
+  const navigate = useNavigate();
   const [quizMode, setQuizMode] = useState(false);
   const [maxNotepad, setMaxNotepad] = useState(false);
   const [lectureData, setLectureData] = useState(null);
-  const [currentLectureIndex, setCurrentLectureIndex] = useState(null);
-  const [notepad, setNotepad] = useState([
-    'Point required to excerise freedom',
-    'Some shenanigans',
-  ]);
+  const [currentLectureIndex, setCurrentLectureIndex] = useState(0);
+  const [questionVisible, setQuestionVisible] = useState(false);
+  const [notepad, setNotepad] = useState([]);
+  const [beginAction, setBeginAction] = useState(false);
+  const [notepadId, setNotepadId] = useState(null);
+  const [lectureId, setLectureId] = useState(params.lectureId);
 
   // Methods
-  const loadState = async () => {
-    try {
-      const data = await fetchDummyLectures();
-      console.log(data);
-      setLectureData(data);
-      setCurrentLectureIndex(0);
-    } catch (error) {
-      console.error(error);
-      toast.error('Error loading data');
-    } finally {
-    }
-  };
-
   const handleDeletePoint = (pIndex) => {
     setNotepad((p) => p.filter((_, index) => index !== pIndex));
   };
@@ -51,7 +50,7 @@ const LecturePage = () => {
   const handleAddPoint = (point) => {
     setNotepad((p) => [...p, point]);
   };
-  const handleCourseSelection = (index) => {
+  const handleCourseSelection = async (index) => {
     // if (index === currentLectureIndex) return;
 
     const tempLectureData = { ...lectureData };
@@ -59,10 +58,14 @@ const LecturePage = () => {
     setLectureData(tempLectureData);
     setCurrentLectureIndex(index);
 
+    setTimeout(() => {
+      handleOutlineFilling(tempLectureData);
+    }, 300);
     if (tempLectureData.outline[index].isQuiz) {
       endSpeech();
       return;
     }
+
     startSpeech(tempLectureData?.outline[index]?.explanation, () => {
       handleOutlineCompletion();
     });
@@ -82,6 +85,20 @@ const LecturePage = () => {
 
     const tempLectureData = { ...lectureData };
     tempLectureData.outline[currentLectureIndex] = newQuiz;
+
+    const quizData = tempLectureData.outline.filter((data) => data.isQuiz);
+    const quiz = quizData.map((data) => data.score);
+
+    const score = quiz.reduce((prevValue, currentValue) => {
+      if (currentValue === null) {
+        return (prevValue += 100);
+      } else {
+        return (prevValue += currentValue);
+      }
+    });
+
+    const assimilationRate = score / quiz.length;
+    tempLectureData.assimilation = assimilationRate;
 
     setLectureData(tempLectureData);
     console.log(newQuiz);
@@ -120,14 +137,111 @@ const LecturePage = () => {
     setLectureData(tempLectureData);
   };
 
-  // When Component mounts
+  const handleOutlineFilling = async (localLectureData) => {
+    try {
+      const currentLectureData = localLectureData
+        ? { ...localLectureData.outline[currentLectureIndex] }
+        : {
+            ...lectureData.outline[currentLectureIndex],
+          };
+      console.log(currentLectureData);
+
+      if (currentLectureData.explanation === '' && !currentLectureData.isQuiz) {
+        console.log('FIlling up sir');
+        currentLectureData.explanation = await generateExplanation('', '');
+        currentLectureData.powerPoint = await generatePowerpoint();
+
+        const tempLectureData = { ...localLectureData };
+        console.log(tempLectureData, currentLectureIndex);
+        (tempLectureData.outline[currentLectureIndex || 0] =
+          currentLectureData),
+          startSpeech(currentLectureData.explanation);
+        setLectureData(tempLectureData);
+      } else if (currentLectureData.isQuiz) {
+        console.log('FIlling up sir');
+        currentLectureData.quiz = await generateQuiz('');
+
+        const tempLectureData = { ...lectureData };
+        (tempLectureData.outline[currentLectureIndex] = currentLectureData),
+          console.log(tempLectureData);
+
+        setLectureData(tempLectureData);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const onLoadDocument = async () => {
+    try {
+      const lecture = await validateCourse(
+        userCredential.uid,
+        params.lectureId
+      );
+      console.log(lecture);
+
+      const nPad = await fetchNotepad(lecture.notepadId);
+
+      setLectureData(lecture);
+      setNotepadId(lecture.notepadId);
+
+      setNotepad(nPad.notes);
+
+      handleOutlineFilling(lecture);
+      setBeginAction(true);
+    } catch (error) {
+      console.error(error);
+      if (error.message.includes('document-non-existent')) {
+        toast.error('Wrong document id');
+        navigate('/');
+        return;
+      }
+
+      if (error.message.includes('not-user-course')) {
+        toast.error("Course doesn't belong to you");
+        navigate('/');
+        return;
+      }
+
+      toast.error('Error occurred');
+    }
+  };
+
   useEffect(() => {
-    loadState();
-  }, []);
+    if (!beginAction) return;
+
+    updateNotepad(notepadId, notepad);
+  }, [notepad]);
+
+  // When document loads
+  useEffect(() => {
+    if (!userCredential) return;
+    console.log(userCredential);
+
+    onLoadDocument();
+  }, [userCredential]);
+
+  // Database update
+  useEffect(() => {
+    if (!beginAction) return;
+    console.log(lectureData);
+
+    updateCourse(params.lectureId, { ...lectureData })
+      .then(() => {
+        console.log('Data updated');
+      })
+      .catch((e) => console.log(e));
+  }, [lectureData]);
 
   // Monitor Lecture Data Change
   useEffect(() => {
-    if (!lectureData || currentLectureIndex === null) showLoader('lecture');
+    if (
+      lectureData === null ||
+      currentLectureIndex === null ||
+      notepadId === null ||
+      lectureId === null
+    )
+      showLoader('lecture');
     else {
       if (lectureData.outline[currentLectureIndex].covered === false) {
         handleOulineCovered();
@@ -135,12 +249,14 @@ const LecturePage = () => {
       hideLoader('lecture');
     }
   }, [lectureData]);
+
+  useEffect(() => {}, [currentLectureIndex]);
   return (
     <div className="LecturePage ">
       <div className="location-block flex items-center">
-        <p className="course-code">CSC201</p>
+        <p className="course-code">{lectureData?.courseCode}</p>
         <i className="fa-light fa-chevron-right"></i>
-        <p className="file-name">Introduction to computer programing.pdf</p>
+        <p className="file-name">{lectureData?.pdfTitle}</p>
       </div>
       <div className="explanation-block">
         <div className="outline-block fade-right">
