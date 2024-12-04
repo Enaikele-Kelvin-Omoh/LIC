@@ -1,4 +1,9 @@
-import { createDocument, liveListen } from '../firebase/firebaseTools';
+import {
+  createDocument,
+  getDocumentById,
+  liveListen,
+  updateDocumentById,
+} from '../firebase/firebaseTools';
 
 export const createAccount = (firstname, lastname, email, uid) => {
   return new Promise(async (resolve, reject) => {
@@ -13,6 +18,30 @@ export const createAccount = (firstname, lastname, email, uid) => {
         createdAt: new Date(),
       });
       resolve();
+    } catch (error) {
+      console.error(error);
+      reject(error);
+    }
+  });
+};
+
+export const updateUserData = (uid, update) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await updateDocumentById('Account', uid, update);
+      resolve();
+    } catch (error) {
+      console.error(error);
+      reject(error);
+    }
+  });
+};
+
+export const fetchAccountData = (uid) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const accountData = await getDocumentById('Account', uid);
+      resolve(accountData);
     } catch (error) {
       console.error(error);
       reject(error);

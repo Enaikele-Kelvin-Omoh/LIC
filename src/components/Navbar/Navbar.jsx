@@ -10,7 +10,7 @@ import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userLiveData, signout } = useAuth();
+  const { userLiveData, signout, userCredential } = useAuth();
   const [accountVisible, setAccountVisible] = useState(false);
 
   if (location.pathname === pageLinks.authPage.baseUrl) return null;
@@ -37,6 +37,7 @@ const Navbar = () => {
       <AccountComponent
         visible={accountVisible}
         userLiveData={userLiveData}
+        userCredentials={userCredential}
         onSignout={() => {
           setAccountVisible(false);
           signout();
