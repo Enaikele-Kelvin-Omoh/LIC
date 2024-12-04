@@ -27,7 +27,7 @@ const promptChatGpt = (system, prompt) => {
               'Content-Type': 'application/json',
               Authorization:
                 'Bearer ' +
-                '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',
+                '',
             },
             body: JSON.stringify(apiRequestBody),
           }
