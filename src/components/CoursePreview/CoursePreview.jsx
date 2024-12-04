@@ -26,7 +26,18 @@ const CoursePreview = ({ onClick, coursePreviewData, onAddDocument }) => {
             </p>
           </div>
           <div className="course-icons">
-            <img src={editpdf} alt="Edit pdf icon" className="pointer" />
+            <img
+              src={editpdf}
+              alt="Edit pdf icon"
+              className="pointer"
+              onClick={() =>
+                navigate(
+                  pageLinks.notepadPage.baseUrl +
+                    '/' +
+                    coursePreviewData?.notepadId
+                )
+              }
+            />
             <img
               src={addpdf}
               alt="Add pdf icon"

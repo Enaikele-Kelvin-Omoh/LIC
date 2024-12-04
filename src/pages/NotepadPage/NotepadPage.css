@@ -1,18 +1,28 @@
 .NotepadPage {
-  padding-left: 55px;
-  padding-right: 178px;
+  padding: 0 35px;
   position: relative;
   height: calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20px;
 }
 
 .notepad-title {
   font-size: 20px;
   font-weight: 700;
   margin: 25px auto 20px;
+  width: 100%;
 }
 
 ul {
   list-style: none;
+}
+
+.NotepadPage .notepad-container {
+  padding-left: 0;
+  height: 100%;
+  overflow-y: scroll;
 }
 
 .notepad-content-container {
@@ -73,7 +83,6 @@ ul {
 }
 
 .notepad-add-content {
-  margin-left: 40px;
   height: 76px;
 }
 
@@ -81,8 +90,8 @@ ul {
   display: flex;
   align-items: center;
   gap: 30px;
-  position: absolute;
   bottom: 100px;
   left: 50px;
-  width: 92%;
+  width: 100%;
+  margin-top: 10px;
 }

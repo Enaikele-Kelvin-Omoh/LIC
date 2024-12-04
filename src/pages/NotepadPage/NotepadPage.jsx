@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './NotepadPage.css';
+import { toast } from 'react-toastify';
+import useAuth from '../../hooks/useAuth';
+import { useNavigate, useParams } from 'react-router-dom';
+import { hideLoader, showLoader } from '../../utils/loader';
+import { fetchNotepad, updateNotepad } from '../../controllers/notepad';
 
 const NotepadPage = () => {
+  const { userCredential } = useAuth();
+  const navigate = useNavigate();
+  const params = useParams();
+
   const [isClicked, setIsClicked] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [notes, setNotes] = useState(
-    Array.from(
-      { length: 7 },
-      (_, i) =>
-        `A very lengthy point I created for the creation of the UI/UX of the software to be presented at the inventors hackathon. This one is a bit lengthier. This one has multiple lines so as to give users as much liberty as possible. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae dolor, dolore fugiat dignissimos animi libero optio debitis dolorem dolorum sint.`,
-    ),
-  );
+  const [notes, setNotes] = useState([]);
 
   // State for the new note to be added
   const [newNote, setNewNote] = useState('');
+  const [beginAction, setBeginAction] = useState(false);
 
   // Event handlers
   const handleDelete = (index) => {
@@ -53,10 +57,36 @@ const NotepadPage = () => {
       setNewNote(''); // Clear the textarea
     }
   };
+  const onLoad = async () => {
+    try {
+      showLoader('note');
+      const notepad = await fetchNotepad(params.notepadId);
+      setNotes(notepad.notes);
+      setBeginAction(true);
+    } catch (error) {
+      console.error(error);
+      toast.error("Can't load notebook");
+      navigate('/');
+    } finally {
+      hideLoader('note');
+    }
+  };
+  useEffect(() => {
+    onLoad();
+  }, []);
+
+  useEffect(() => {
+    if (!beginAction) return;
+    updateNotepad(params.notepadId, notes)
+      .then(() => {})
+      .catch(() => {
+        toast.error("Can't update notepad");
+      });
+  }, [notes]);
 
   return (
     <div className="NotepadPage">
-      <div className="notepad-title">Notes for CSC 201</div>
+      <div className="notepad-title">Notes</div>
       <ul className="notepad-container">
         {notes.map((note, i) => (
           <div className="notepad-list" key={i}>
