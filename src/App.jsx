@@ -75,7 +75,8 @@ function App() {
           <Routes>
             <Route
               path={pageLinks.unresolvedPage.dynamicUrl}
-              element={<DashboardPage />}
+              element={<NotepadPage />}
+              // Change to Dashboard later
             />
             <Route
               path={pageLinks.authPage.dynamicUrl}
