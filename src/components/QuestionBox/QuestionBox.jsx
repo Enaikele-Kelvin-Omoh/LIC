@@ -1,12 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './QuestionBox.css';
 import { resumeSpeech } from '../../responsiveVoice/responsiveVoice';
+import LoadingComponent from '../LoadingComponent/LoadingComponent';
+import { toast } from 'react-toastify';
+import { generateAnswer } from '../../controllers/generation';
 
-const QuestionBox = ({ visible, onHideQuestionBox }) => {
+const QuestionBox = ({ visible, onHideQuestionBox, courseSummary }) => {
+  const [response, setResponse] = useState(null);
+  const [text, setText] = useState('');
   const handleKeyPress = (e) => {
     if (e.key === 'Escape') {
+      setResponse(null);
       onHideQuestionBox();
       resumeSpeech();
+    }
+  };
+
+  const handleGenerateAnswer = async () => {
+    try {
+      setResponse(undefined);
+      const answer = await generateAnswer(courseSummary, text);
+      setResponse(answer);
+      setText('');
+    } catch (error) {
+      console.error(error);
+      setResponse(null);
+      toast.error('An error came up');
+    } finally {
     }
   };
   useEffect(() => {
@@ -15,29 +35,25 @@ const QuestionBox = ({ visible, onHideQuestionBox }) => {
       window.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
+
   return (
-    <div className={`QuestionBox ${visible ? 'qb-active' : 'qb-inactive'}`}>
-      <div className="preview-qb">
-        <textarea type="text" placeholder="Enter question..." />
-        <button>Generate answer</button>
+    <div
+      className={`QuestionBox ${visible ? 'qb-active' : 'qb-inactive'}  ${
+        response === null ? 'h-ht' : 'f-ht'
+      } `}
+    >
+      <div className={`preview-qb`}>
+        <textarea
+          type="text"
+          placeholder="Enter question..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <button onClick={handleGenerateAnswer}>Generate answer</button>
       </div>
-      <p>
-        Humanity's beauty lies in its diversity, resilience, and capacity for
-        compassion. Each individual, despite their unique origins, contributes
-        to a vast mosaic of cultures, ideas, and expressions that define the
-        human experience. This diversity, seen in the multitude of languages,
-        traditions, and perspectives, enriches our world and fosters creativity,
-        innovation, and understanding. At the heart of humanity's beauty is its
-        resilience. Throughout history, humans have faced immense
-        challenges—wars, natural disasters, and societal upheavals—but have
-        continually risen to rebuild and innovate. This unwavering spirit
-        demonstrates the profound strength that resides in the human heart.
-        Equally remarkable is the capacity for compassion and empathy. Humanity
-        has an extraordinary ability to connect, to feel another's joy or pain,
-        and to act selflessly. Acts of kindness, whether small gestures or
-        monumental sacrifices, illuminate the potential for goodness within each
-        of us.
-      </p>
+      <div className="res-box">
+        {response === undefined ? <LoadingComponent /> : <p>{response}</p>}
+      </div>
     </div>
   );
 };

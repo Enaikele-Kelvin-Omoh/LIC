@@ -2,14 +2,21 @@
   position: fixed;
   background-color: var(--background-color);
   width: 627px;
-  height: 516px;
   border-radius: 10px;
-
   border: 0.5px solid var(--input-border-color);
   left: 50%;
   padding: 30px 40px;
   transform: translateX(-50%);
   transition: 0.7s ease-in-out;
+}
+
+.h-ht {
+  height: 200px;
+  overflow: hidden;
+}
+
+.f-ht {
+  height: 516px;
 }
 
 .QuestionBox .preview-qb {
