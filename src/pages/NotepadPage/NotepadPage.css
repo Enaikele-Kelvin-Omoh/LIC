@@ -1,9 +1,88 @@
-/* .NotepadPage {
+.NotepadPage {
+  padding-left: 55px;
+  padding-right: 178px;
+  position: relative;
+  height: calc(100vh - 55px);
+}
+
+.notepad-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 25px auto 20px;
+}
+
+ul {
+  list-style: none;
+}
+
+.notepad-content-container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+}
+
+.notepad-list {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  /* align-items: ; */
+  width: 100%;
+}
+
+.notepad-point {
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.point-marker {
+  color: #324cdc;
+  align-self: flex-start;
+  margin-top: 7px;
+}
+
+/* .notepad-list:nth-of-type(2) {
 } */
 
-.notepad-list::marker {
-  width: 20px;
-  height: 20px;
-  background-color: blue;
-  transform: rotate(90deg);
+.notepad-textarea {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.notepad-edit-buttons {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  align-self: flex-start;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+.notepad-button {
+  background-color: #1f1f1f;
+  width: 130px;
+}
+
+.btn-notepad-submit {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.notepad-add-content {
+  margin-left: 40px;
+  height: 76px;
+}
+
+.notepad-add-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: absolute;
+  bottom: 100px;
+  left: 50px;
+  width: 92%;
 }
