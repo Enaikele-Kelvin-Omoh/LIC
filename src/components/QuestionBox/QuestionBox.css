@@ -17,6 +17,7 @@
 
 .f-ht {
   height: 516px;
+  overflow-y: scroll;
 }
 
 .QuestionBox .preview-qb {

@@ -76,47 +76,55 @@ export const generatePowerpoint = (explanation) => {
 };
 
 export const generateQuiz = (chunk, index) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
       console.log('generating quiz');
+      const prompt = `
+      for an outline from a pdf generate me quiz like this:
 
-      setTimeout(() => {
-        resolve([
+      [
           {
-            question:
-              'France is a country in Western Europe that is famous for its culture, art, and history. Among its many cities, one serves as the capital and is also known as the "City of Light." What is the name of the capital city of France?',
-            options: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-            answer: 'Paris',
+            question:"question here",
+            options: ["wrong option", "wrong option","wrong option"],
+            answer: 'right answer',
             response: null,
           },
-          {
-            question:
-              'In our solar system, there is a planet characterized by its reddish appearance due to iron oxide on its surface. This planet is often referred to as the "Red Planet" and is the fourth planet from the Sun. Which planet is this?',
-            options: ['Earth', 'Mars', 'Jupiter', 'Saturn'],
-            answer: 'Mars',
+           {
+            question:"question here",
+            options: ["wrong option", "wrong option","wrong option"],
+            answer: 'right answer',
             response: null,
           },
-          {
-            question:
-              'One of the most famous plays in literature tells the tragic story of two young lovers whose families are bitter rivals. This work was written by a celebrated English playwright of the late 16th century. What is the name of the author of "Romeo and Juliet"?',
-            options: [
-              'William Wordsworth',
-              'William Shakespeare',
-              'Charles Dickens',
-              'Jane Austen',
-            ],
-            answer: 'William Shakespeare',
+           {
+            question:"question here",
+            options: ["wrong option", "wrong option","wrong option"],
+            answer: 'right answer',
             response: null,
           },
-          {
-            question:
-              'The largest animal on Earth is a marine mammal known for its enormous size and ability to produce loud, low-pitched sounds. This animal can grow up to 100 feet in length and weighs more than 150 tons. What is the name of this mammal?',
-            options: ['Elephant', 'Blue Whale', 'Giraffe', 'Hippopotamus'],
-            answer: 'Blue Whale',
+           {
+            question:"question here",
+            options: ["wrong option", "wrong option","wrong option"],
+            answer: 'right answer',
             response: null,
           },
-        ]);
-      }, 500);
+        ]
+
+       leave response as null,  only write three options. Generate questions from this:
+
+        ${chunk}.
+
+        Generate an array for me
+      `;
+      const resp = await promptChatGpt(
+        'Generate a javascript array. Do not include heading or markdown formatting. Make your response suitable for JSON parsing.',
+        prompt
+      );
+
+      console.log(resp);
+
+      const ans = JSON.parse(resp);
+      console.log(ans);
+      resolve(ans);
     } catch (error) {
       console.error(error);
       reject(error);
@@ -230,25 +238,18 @@ export const generateOutlines = (chunks) => {
 };
 
 export const generateAnswer = (summary, question) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     try {
-      setTimeout(() => {
-        resolve(`  Humanity's beauty lies in its diversity, resilience, and capacity for
-        compassion. Each individual, despite their unique origins, contributes
-        to a vast mosaic of cultures, ideas, and expressions that define the
-        human experience. This diversity, seen in the multitude of languages,
-        traditions, and perspectives, enriches our world and fosters creativity,
-        innovation, and understanding. At the heart of humanity's beauty is its
-        resilience. Throughout history, humans have faced immense
-        challenges—wars, natural disasters, and societal upheavals—but have
-        continually risen to rebuild and innovate. This unwavering spirit
-        demonstrates the profound strength that resides in the human heart.
-        Equally remarkable is the capacity for compassion and empathy. Humanity
-        has an extraordinary ability to connect, to feel another's joy or pain,
-        and to act selflessly. Acts of kindness, whether small gestures or
-        monumental sacrifices, illuminate the potential for goodness within each
-        of us.`);
-      }, 1000);
+      const prompt = `
+      A student asked the following question "${question}". Using information from this summary "${summary}", generate a response that answers his/her question comprehensively but within 50 - 300 words.
+      `;
+      const resp = await promptChatGpt(
+        'Do not include heading or markdown formatting. Respond with paragraphs. Respond like a friendly lecturer',
+        prompt
+      );
+
+      console.log(resp);
+      resolve(resp);
     } catch (error) {
       console.error(error);
       reject(error);

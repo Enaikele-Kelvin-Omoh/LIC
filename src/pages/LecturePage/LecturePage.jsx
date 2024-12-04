@@ -165,7 +165,7 @@ const LecturePage = () => {
       } else if (currentLectureData.isQuiz) {
         console.log('FIlling up sir');
         currentLectureData.quiz = await generateQuiz(
-          lectureData?.summaries,
+          lectureData?.summary,
           currentLectureIndex
         );
 
@@ -319,6 +319,7 @@ const LecturePage = () => {
       )}
       <QuestionBox
         visible={questionVisible}
+        courseSummary={lectureData?.summary}
         onHideQuestionBox={() => {
           resumeSpeech();
           setQuestionVisible(false);

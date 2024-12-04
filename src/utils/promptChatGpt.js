@@ -2,32 +2,32 @@ const promptChatGpt = (system, prompt) => {
   return new Promise(async (resolve, reject) => {
     try {
       const systemMessage = {
-        role: "system",
+        role: 'system',
         content: system,
       };
 
       const apiMessages = [
         {
-          role: "user",
+          role: 'user',
           content: prompt,
         },
       ];
 
       const apiRequestBody = {
-        model: "gpt-4o-mini",
+        model: 'gpt-4o-mini',
         messages: [systemMessage, ...apiMessages],
       };
 
       const requestAction = async () => {
         const response = await fetch(
-          "https://api.openai.com/v1/chat/completions",
+          'https://api.openai.com/v1/chat/completions',
           {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
               Authorization:
-                "Bearer " +
-                "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",
+                'Bearer ' +
+                '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',
             },
             body: JSON.stringify(apiRequestBody),
           }
