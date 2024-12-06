@@ -4,3 +4,4 @@ dist
 .env.local
 .env.*.local
 /build
+dist/assets/index-BPJTHu53.js
