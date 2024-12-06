@@ -1,7 +1,7 @@
 const promptChatGpt = (system, prompt) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log(import.meta.env.VITE_KEY);
+      console.log(import.meta.env.VITE_OPENAI_API_KEY);
 
       const systemMessage = {
         role: 'system',
@@ -28,7 +28,7 @@ const promptChatGpt = (system, prompt) => {
             headers: {
               'Content-Type': 'application/json',
 
-              Authorization: 'Bearer ' + `${import.meta.env.VITE_KEY}`,
+              Authorization: 'Bearer ' + `${import.meta.env.VITE_OPENAI_API_KEY}`,
             },
             body: JSON.stringify(apiRequestBody),
           }
