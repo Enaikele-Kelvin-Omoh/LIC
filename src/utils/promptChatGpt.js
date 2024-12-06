@@ -1,8 +1,6 @@
 const promptChatGpt = (system, prompt) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log(import.meta.env.VITE_OPENAI_API_KEY);
-
       const systemMessage = {
         role: 'system',
         content: system,
@@ -29,17 +27,14 @@ const promptChatGpt = (system, prompt) => {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-
-              Authorization: 'Bearer ' + apiKey,
+              Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify(apiRequestBody),
           }
         );
 
         const responseData = await response.json();
-
         const payload = responseData.choices[0].message.content;
-
         resolve(payload);
       };
 

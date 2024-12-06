@@ -1,7 +1,28 @@
+# Dependencies
 node_modules
 dist
+
+# Environment files
 .env
 .env.local
 .env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build files
 /build
-dist/assets/index-BPJTHu53.js
+dist/assets/*
+
+# IDE files
+.vscode
+.idea
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# System Files
+.DS_Store
+Thumbs.db

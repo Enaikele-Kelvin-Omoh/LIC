@@ -4,17 +4,13 @@ export const uploadToCloudinary = (blobFile) => {
       throw new Error('A Blob file is required.');
     }
 
-    // Replace these with your actual Cloudinary settings
-    const CLOUD_NAME = 'your-cloud-name'; // Your Cloudinary cloud name
-    const UPLOAD_PRESET = 'your-unsigned-preset'; // Your unsigned preset name
-
     const formData = new FormData();
     formData.append('file', blobFile);
-    formData.append('upload_preset', 'my_first_preset');
+    formData.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
 
     try {
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${'dvkmlmbqs'}/image/upload`,
+        import.meta.env.VITE_CLOUDINARY_API_URL,
         {
           method: 'POST',
           body: formData,
@@ -26,7 +22,7 @@ export const uploadToCloudinary = (blobFile) => {
       }
 
       const data = await response.json();
-      resolve(data.secure_url); // Returns the URL of the uploaded file
+      resolve(data.secure_url);
     } catch (error) {
       console.error('Cloudinary upload error:', error);
       throw error;
