@@ -13,6 +13,7 @@ dist
 # Build files
 /build
 dist/assets/*
+!dist/assets/.gitkeep
 
 # IDE files
 .vscode

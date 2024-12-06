@@ -38,16 +38,14 @@ export async function fetchFileFromUrl(fileUrl) {
 
     try {
       const response = await fetch(fileUrl);
-
       if (!response.ok) {
         throw new Error(`Failed to fetch the file: ${response.statusText}`);
       }
-
-      const blob = await response.blob(); // Convert response to a Blob
-      resolve(blob); // Return the Blob object
+      const blob = await response.blob();
+      resolve(blob);
     } catch (error) {
       console.error('Error fetching the file:', error);
       throw error;
     }
   });
-}
+};

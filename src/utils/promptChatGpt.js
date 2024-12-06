@@ -1,17 +1,12 @@
 const promptChatGpt = (system, prompt) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const systemMessage = {
-        role: 'system',
-        content: system,
-      };
+      if (!import.meta.env.VITE_OPENAI_API_KEY) {
+        throw new Error('OpenAI API key is not configured');
+      }
 
-      const apiMessages = [
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ];
+      const systemMessage = { role: 'system', content: system };
+      const apiMessages = [{ role: 'user', content: prompt }];
 
       const apiRequestBody = {
         model: 'gpt-4o-mini',
@@ -33,14 +28,17 @@ const promptChatGpt = (system, prompt) => {
           }
         );
 
+        if (!response.ok) {
+          throw new Error('OpenAI API request failed');
+        }
+
         const responseData = await response.json();
-        const payload = responseData.choices[0].message.content;
-        resolve(payload);
+        resolve(responseData.choices[0].message.content);
       };
 
       setTimeout(requestAction, 20);
     } catch (error) {
-      console.error(error);
+      console.error('ChatGPT API Error:', error);
       reject(error);
     }
   });
